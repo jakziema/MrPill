@@ -13,11 +13,11 @@ class Medicine: PFObject {
     @NSManaged var medicineName: String?
     @NSManaged var amountQuantity: String?
     
-    override class func query() -> PFQuery? {
-        let query = PFQuery(className: Medicine.parseClassName())
-        query.orderByDescending("medicineName")
-        return query
-    }
+//    override class func query() -> PFQuery? {
+//        let query = PFQuery(className: Medicine.parseClassName())
+//        query.orderByDescending("medicineName")
+//        return query
+//    }
     
     init(medicineName: String?, amountQuantity: String?) {
         super.init()

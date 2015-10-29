@@ -87,6 +87,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         for item in medicines {
             if let row = self.table.rowControllerAtIndex(rowIndex) as? tableRowController {
                 row.medicineLabel.setText(item.0)
+                
                 if let quantity = item.1 {
                     row.amountLabel.setText(quantity)
                 }
