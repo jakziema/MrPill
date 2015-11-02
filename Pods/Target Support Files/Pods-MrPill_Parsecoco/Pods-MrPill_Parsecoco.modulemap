@@ -1,0 +1,6 @@
+framework module Pods_MrPill_Parsecoco {
+  umbrella header "Pods-MrPill_Parsecoco-umbrella.h"
+
+  export *
+  module * { export * }
+}
