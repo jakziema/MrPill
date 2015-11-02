@@ -45,8 +45,9 @@ class MedicineTableViewController: UITableViewController{
     func handleRefresh(refreshControl: UIRefreshControl) {
         
         
-        self.tableViewMedicines.reloadData()
+       
         fetchFromCoreData()
+        self.tableView.reloadData()
         refreshControl.endRefreshing()
     }
     
@@ -62,7 +63,7 @@ class MedicineTableViewController: UITableViewController{
             
             fetchFromParse()
             fetchFromCoreData()
-            tableView.reloadData()
+            tableViewMedicines.reloadData()
             
             
         } else {
@@ -128,8 +129,6 @@ class MedicineTableViewController: UITableViewController{
                 
                 do {
                     try self.context.save()
-                    self.tableView.reloadData()
-
                     
                 } catch let error as NSError {
                     print("Could not save \(error), \(error.userInfo)")
