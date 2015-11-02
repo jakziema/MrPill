@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             session.delegate = self
             session.activateSession()
         }
+        
+
 
         return true
     }
@@ -81,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
-        
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -90,11 +91,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         
+
     }
     
     func applicationWillTerminate(application: UIApplication) {
         self.saveContext()
+
     }
+    
+    
     
     // MARK: - Core Data stack
     

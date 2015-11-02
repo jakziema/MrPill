@@ -37,15 +37,15 @@ class MedicineTableViewController: UITableViewController{
         
         
         self.tableView.addSubview(self.refreshCtrl)
-
-
+        
+        
         
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
         
         
-       
+        
         fetchFromCoreData()
         self.tableView.reloadData()
         refreshControl.endRefreshing()
@@ -60,19 +60,22 @@ class MedicineTableViewController: UITableViewController{
     override func viewWillAppear(animated: Bool) {
         if Reachability.isConnectedToNetwork() {
             //fetching data from Parse
-            
+            print("Jest internet")
             fetchFromParse()
             fetchFromCoreData()
             tableViewMedicines.reloadData()
             
             
         } else {
+            print("Brak internetu")
             //fetching data from Core data
             fetchFromCoreData()
             logOutButton.enabled = false
             
         }
     }
+    
+    
     
     // MARK: - Table view data source
     
@@ -120,26 +123,31 @@ class MedicineTableViewController: UITableViewController{
                                     medicine.setValue(name, forKey: "name")
                                     medicine.setValue(amount, forKey: "amount")
                                     
+                                    
+                                    
                                 }
+                                
+                                
                             } catch let error as NSError{
                                 print(error)
                             }
                     }
                 }
-                
-                do {
-                    try self.context.save()
-                    
-                } catch let error as NSError {
-                    print("Could not save \(error), \(error.userInfo)")
-                }
-                
-                
             } else {
                 let ac = UIAlertController(title: "Messagge", message: "Nie przygotowano jeszcze listy leków", preferredStyle: UIAlertControllerStyle.Alert)
                 ac.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(ac, animated: true, completion: nil)
             }
+        }
+        
+        do {
+            
+            try self.context.save()
+            print("Context.save")
+
+            
+        } catch let error as NSError {
+            print("Could not save \(error), \(error.userInfo)")
         }
     }
     
@@ -148,22 +156,12 @@ class MedicineTableViewController: UITableViewController{
         do {
             let results = try context.executeFetchRequest(fetchRequest)
             medicines = results  as! [Medicine]
+            print("FetchFromCoreData")
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-        
-        
-        
-        
+   
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 }
