@@ -33,7 +33,7 @@ class MedicineTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
         
         
         self.tableView.addSubview(self.refreshCtrl)
