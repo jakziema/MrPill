@@ -17,7 +17,7 @@
 		0774FAA41BC68E63006FB847 /* MrPill_ParsecocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0774FAA31BC68E63006FB847 /* MrPill_ParsecocoTests.swift */; };
 		07E15A2A1BC690E5009B5AB4 /* MedicineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A291BC690E5009B5AB4 /* MedicineTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		07E15A2C1BC6911D009B5AB4 /* MedicineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2B1BC6911D009B5AB4 /* MedicineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		07E15A2E1BC6914D009B5AB4 /* MedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2D1BC6914D009B5AB4 /* MedicineViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		07E15A2E1BC6914D009B5AB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2D1BC6914D009B5AB4 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		07E15A301BC6917B009B5AB4 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2F1BC6917B009B5AB4 /* UIViewControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		07ED31DC1BD008A200A92933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07ED31DB1BD008A200A92933 /* Assets.xcassets */; };
 		07ED31E31BD008A200A92933 /* App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 07ED31E21BD008A200A92933 /* App Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -96,7 +96,7 @@
 		07E15A241BC68F88009B5AB4 /* MrPill_Parsecoco-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MrPill_Parsecoco-Bridging-Header.h"; sourceTree = "<group>"; };
 		07E15A291BC690E5009B5AB4 /* MedicineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineTableViewCell.swift; sourceTree = "<group>"; };
 		07E15A2B1BC6911D009B5AB4 /* MedicineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineTableViewController.swift; sourceTree = "<group>"; };
-		07E15A2D1BC6914D009B5AB4 /* MedicineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineViewController.swift; sourceTree = "<group>"; };
+		07E15A2D1BC6914D009B5AB4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		07E15A2F1BC6917B009B5AB4 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		07ED31D61BD008A200A92933 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07ED31D91BD008A200A92933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				07E15A2B1BC6911D009B5AB4 /* MedicineTableViewController.swift */,
 				07301CBA1BE5338800838A34 /* Reachability.swift */,
 				07301CB61BE521FC00838A34 /* Medicine.swift */,
-				07E15A2D1BC6914D009B5AB4 /* MedicineViewController.swift */,
+				07E15A2D1BC6914D009B5AB4 /* LoginViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -469,7 +469,7 @@
 				07E15A2A1BC690E5009B5AB4 /* MedicineTableViewCell.swift in Sources */,
 				07E15A301BC6917B009B5AB4 /* UIViewControllerExtension.swift in Sources */,
 				072DEF841BE503CE00A98AB0 /* Model.xcdatamodeld in Sources */,
-				07E15A2E1BC6914D009B5AB4 /* MedicineViewController.swift in Sources */,
+				07E15A2E1BC6914D009B5AB4 /* LoginViewController.swift in Sources */,
 				07301CBB1BE5338800838A34 /* Reachability.swift in Sources */,
 				07E15A2C1BC6911D009B5AB4 /* MedicineTableViewController.swift in Sources */,
 			);

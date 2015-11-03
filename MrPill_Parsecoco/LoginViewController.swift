@@ -25,11 +25,17 @@ class LoginViewController: UIViewController {
                 self.performSegueWithIdentifier(tableViewWallSegue, sender: nil)
             }
         }
+        
+    navigationController?.navigationBar.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        
+
+
     }
     
     override func viewWillDisappear(animated: Bool) {
         
     }
+    
     
     // MARK: - Actions
     @IBAction func logInPressed(sender: AnyObject) {
