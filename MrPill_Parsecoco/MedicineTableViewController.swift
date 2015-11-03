@@ -14,7 +14,6 @@ import CoreData
 class MedicineTableViewController: UITableViewController{
     
     var medicines : [Medicine] = [Medicine]()
-    var fetchedResultsController: NSFetchedResultsController!
     var context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     let fetchRequest = NSFetchRequest(entityName: "Medicine")
     
@@ -29,25 +28,20 @@ class MedicineTableViewController: UITableViewController{
         return refreshControl
         }()
     
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
-        
-        
+
         self.tableView.addSubview(self.refreshCtrl)
-        
-        
-        
+  
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
         
-        
-        
         fetchFromCoreData()
-        self.tableView.reloadData()
         refreshControl.endRefreshing()
     }
     
@@ -64,6 +58,7 @@ class MedicineTableViewController: UITableViewController{
             fetchFromParse()
             fetchFromCoreData()
             tableViewMedicines.reloadData()
+            
             
             
         } else {
@@ -157,6 +152,7 @@ class MedicineTableViewController: UITableViewController{
             let results = try context.executeFetchRequest(fetchRequest)
             medicines = results  as! [Medicine]
             print("FetchFromCoreData")
+            tableViewMedicines.reloadData()
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
