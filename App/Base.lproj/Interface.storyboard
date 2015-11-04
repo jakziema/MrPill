@@ -13,10 +13,10 @@
                         <table alignment="left" id="4PQ-62-eHx">
                             <items>
                                 <tableRow identifier="tableRowController" id="OCL-5I-Cep" customClass="tableRowController" customModule="App_Extension">
-                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="GqM-AY-Z0W">
+                                    <group key="rootItem" width="1" height="45.5" alignment="left" layout="vertical" id="GqM-AY-Z0W">
                                         <items>
-                                            <label width="136" height="11" alignment="left" text="afsda" id="wqd-EB-vtF">
-                                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label width="136" height="20" alignment="left" text="afsda" id="wqd-EB-vtF">
+                                                <color key="textColor" red="1" green="0.092421955147700685" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="font" style="UICTFontTextStyleTitle1"/>
                                             </label>
                                             <label width="136" height="27" alignment="left" text="fdafds" numberOfLines="3" id="Phz-ac-CLh">
