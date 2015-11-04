@@ -36,6 +36,10 @@ class LoginViewController: UIViewController {
         
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     
     // MARK: - Actions
     @IBAction func logInPressed(sender: AnyObject) {

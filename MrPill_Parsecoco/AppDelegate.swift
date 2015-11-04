@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     
     
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -30,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             session.activateSession()
         }
         
-
-
+        
+        
         return true
     }
     
@@ -75,9 +76,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                     replyHandler(["quantity": quantity])
                 })
             }
+                
+            
         }
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
         
     }
@@ -91,12 +94,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         
-
+        
     }
     
     func applicationWillTerminate(application: UIApplication) {
         self.saveContext()
-
+        
     }
     
     

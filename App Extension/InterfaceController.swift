@@ -25,10 +25,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
-        
+       
         
     }
     
+    func session(session: WCSession, didReceiveFile file: WCSessionFile) {
+        print(file)
+    }
     
     
     override func willActivate() {
@@ -47,8 +50,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             
             if let medicine = content["medicines"]  as? [String] {
                 self.addMedicines(medicine)
-                print(medicine)
-                //self.reloadTable()
+                //print(medicine)
+                self.reloadTable()
             }
             
             }, errorHandler: {  (error ) -> Void in
@@ -63,7 +66,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             
             if let quantity = content["quantity"]  as? [String] {
                 self.addQuantities(quantity)
-                print(quantity)
+                //print(quantity)
                 self.reloadTable()
                 
                 
@@ -75,6 +78,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 
             
         })
+        
+        
         
         
         

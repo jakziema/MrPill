@@ -12,5 +12,7 @@ import CoreData
 class Medicine: NSManagedObject {
     @NSManaged var name: String?
     @NSManaged var amount: String?
+    @NSManaged var time: String?
+
     
 }

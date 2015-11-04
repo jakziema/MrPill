@@ -98,29 +98,36 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPc-qb-mPC">
-                                            <rect key="frame" x="8" y="8" width="359" height="33"/>
+                                            <rect key="frame" x="8" y="8" width="303" height="33"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="33" id="46W-Sd-82t"/>
+                                                <constraint firstAttribute="width" constant="303" id="KPQ-LG-49C"/>
+                                                <constraint firstAttribute="height" constant="33" id="mg9-99-aVh"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qC-k8-KtM">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qC-k8-KtM">
                                             <rect key="frame" x="8" y="49" width="359" height="43"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISn-rU-cQY">
+                                            <rect key="frame" x="319" y="14" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="xPc-qb-mPC" firstAttribute="leading" secondItem="JJs-Hu-HwM" secondAttribute="leadingMargin" id="63q-nR-mkb"/>
-                                        <constraint firstItem="xPc-qb-mPC" firstAttribute="top" secondItem="JJs-Hu-HwM" secondAttribute="topMargin" id="Cy0-4r-Nqi"/>
-                                        <constraint firstItem="xPc-qb-mPC" firstAttribute="trailing" secondItem="JJs-Hu-HwM" secondAttribute="trailingMargin" id="FVt-xe-2d8"/>
-                                        <constraint firstItem="8qC-k8-KtM" firstAttribute="top" secondItem="xPc-qb-mPC" secondAttribute="bottom" constant="8" symbolic="YES" id="f4f-gx-xVP"/>
-                                        <constraint firstItem="xPc-qb-mPC" firstAttribute="trailing" secondItem="8qC-k8-KtM" secondAttribute="trailing" id="hj6-5X-aOO"/>
-                                        <constraint firstItem="8qC-k8-KtM" firstAttribute="leading" secondItem="xPc-qb-mPC" secondAttribute="leading" id="nBZ-Tk-dhn"/>
+                                        <constraint firstItem="xPc-qb-mPC" firstAttribute="leading" secondItem="JJs-Hu-HwM" secondAttribute="leadingMargin" id="8SO-ws-lxU"/>
+                                        <constraint firstItem="xPc-qb-mPC" firstAttribute="centerY" secondItem="ISn-rU-cQY" secondAttribute="centerY" id="cLU-F7-EBe"/>
+                                        <constraint firstItem="xPc-qb-mPC" firstAttribute="top" secondItem="JJs-Hu-HwM" secondAttribute="topMargin" id="mTZ-PJ-NtW"/>
+                                        <constraint firstItem="xPc-qb-mPC" firstAttribute="leading" secondItem="8qC-k8-KtM" secondAttribute="leading" id="mel-ea-vki"/>
+                                        <constraint firstItem="ISn-rU-cQY" firstAttribute="leading" secondItem="xPc-qb-mPC" secondAttribute="trailing" constant="8" symbolic="YES" id="oBV-3v-w9p"/>
                                         <constraint firstItem="8qC-k8-KtM" firstAttribute="bottom" secondItem="JJs-Hu-HwM" secondAttribute="bottomMargin" id="qcp-gR-gie"/>
+                                        <constraint firstItem="8qC-k8-KtM" firstAttribute="top" secondItem="xPc-qb-mPC" secondAttribute="bottom" constant="8" symbolic="YES" id="uku-Yy-Waj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -128,6 +135,7 @@
                                 <connections>
                                     <outlet property="amountLabel" destination="8qC-k8-KtM" id="kE4-nd-otZ"/>
                                     <outlet property="medicineLabel" destination="xPc-qb-mPC" id="w44-hw-2ql"/>
+                                    <outlet property="timeLabel" destination="ISn-rU-cQY" id="A8n-SL-H5l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -12,5 +12,6 @@ import UIKit
 class MedicineTableViewCell: UITableViewCell {
     @IBOutlet weak var medicineLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
 }

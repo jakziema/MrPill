@@ -93,6 +93,7 @@ class MedicineTableViewController: UITableViewController{
         // Configure the cell...
         cell.medicineLabel.text = medicines[indexPath.row].name
         cell.amountLabel.text = medicines[indexPath.row].amount
+        cell.timeLabel.text = medicines[indexPath.row].time
         return cell
     }
     
@@ -106,7 +107,9 @@ class MedicineTableViewController: UITableViewController{
                 for object in objects! {
                     
                     if let  name = object["medicineName"] as? String,
-                        amount = object["amountQuantity"] as? String {
+                        amount = object["amountQuantity"] as? String,
+                        time = object["time"] as? String
+                        {
                             
                             let predicate = NSPredicate(format: "name = %@", name)
                             self.fetchRequest.predicate = predicate
@@ -120,6 +123,7 @@ class MedicineTableViewController: UITableViewController{
                                     let medicine = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
                                     medicine.setValue(name, forKey: "name")
                                     medicine.setValue(amount, forKey: "amount")
+                                    medicine.setValue(time, forKey: "time")
                                     
                                     
                                     
