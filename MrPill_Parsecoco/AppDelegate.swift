@@ -36,50 +36,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         return true
     }
     
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        // handle message
-        var medicines = [String]()
-        var quantity = [String]()
-        
-        if let receivedMessage = message["Value"] {
-            if receivedMessage as! String == "Query" {
-                let query = PFQuery(className: (PFUser.currentUser()?.username)!)
-                
-                query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                    
-                    if error == nil {
-                        for medicine in objects! {
-                            if let zawartosc = medicine["medicineName"] as? String {
-                                medicines.append(zawartosc)
+        func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+            // handle message
+            var medicines = [String]()
+            var quantity = [String]()
+    
+            if let receivedMessage = message["Value"] {
+                if receivedMessage as! String == "Query" {
+                    let query = PFQuery(className: (PFUser.currentUser()?.username)!)
+    
+                    query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+    
+                        if error == nil {
+                            for medicine in objects! {
+                                if let zawartosc = medicine["medicineName"] as? String {
+                                    medicines.append(zawartosc)
+                                }
                             }
                         }
-                    }
-                    // sending dict
-                    replyHandler(["medicines": medicines])
-                })
-                
-                
-                
-            } else if receivedMessage as! String == "Amount" {
-                let query = PFQuery(className: (PFUser.currentUser()?.username)!)
-                
-                query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-                    
-                    if error == nil {
-                        for quantity1 in objects! {
-                            if let zawartosc = quantity1["amountQuantity"] as? String {
-                                quantity.append(zawartosc)
+                        // sending dict
+                        replyHandler(["medicines": medicines])
+                    })
+    
+    
+    
+                } else if receivedMessage as! String == "Amount" {
+                    let query = PFQuery(className: (PFUser.currentUser()?.username)!)
+    
+                    query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+    
+                        if error == nil {
+                            for quantity1 in objects! {
+                                if let zawartosc = quantity1["amountQuantity"] as? String {
+                                    quantity.append(zawartosc)
+                                }
                             }
                         }
-                    }
-                    // sending dict
-                    replyHandler(["quantity": quantity])
-                })
+                        // sending dict
+                        replyHandler(["quantity": quantity])
+                    })
+                }
+    
+    
             }
-                
-            
         }
-    }
+    
+    
+    
+    
+//    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+//        if let receivedMessage = message["message"] {
+//            if receivedMessage as! String == "iNeedCoreData" {
+//                
+//                let bundle = NSBundle.mainBundle()
+//                let modelURL = bundle.URLForResource("Medicine", withExtension: "momd")!
+//                do {
+//                    let myStore = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(nil, URL: modelURL)
+//                    let fileTransfer = WCSession.defaultSession().transferFile(modelURL, metadata:myStore)
+//                }catch let error as NSError {
+//                    print(error.userInfo)
+//                }
+//            }
+//        }
+//    }
+    
+    
     
     func applicationWillResignActive(application: UIApplication) {
         

@@ -29,9 +29,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
     }
     
-    func session(session: WCSession, didReceiveFile file: WCSessionFile) {
-        print(file)
-    }
+    
     
     
     override func willActivate() {
@@ -80,11 +78,24 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         })
         
         
-        
-        
-        
-        
+//        let iNeedCoreData = ["message": "iNeedCoreData"]
+//        
+//        session.sendMessage(iNeedCoreData, replyHandler: { (content:[String: AnyObject]) -> Void in
+//            
+//            if let receivedMessage = content["reply"] {
+//                print(receivedMessage)
+//            }
+//            
+//            }) { (error) -> Void in
+//                print(error.userInfo)
+//        }
+  
     }
+    
+//    func session(session: WCSession, didReceiveFile file: WCSessionFile) {
+//        print(file)
+//    }
+ 
     
     func reloadTable() {
         self.table.setNumberOfRows(medicines.count, withRowType: "tableRowController")
