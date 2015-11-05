@@ -15,13 +15,6 @@
 		0774FA961BC68E63006FB847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774FA951BC68E63006FB847 /* Assets.xcassets */; };
 		0774FA991BC68E63006FB847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0774FA971BC68E63006FB847 /* LaunchScreen.storyboard */; };
 		0774FAA41BC68E63006FB847 /* MrPill_ParsecocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0774FAA31BC68E63006FB847 /* MrPill_ParsecocoTests.swift */; };
-		07CF037F1BEB58D100905C48 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF037E1BEB58D100905C48 /* InterfaceController.swift */; };
-		07CF03811BEB58D100905C48 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF03801BEB58D100905C48 /* NotificationController.swift */; };
-		07CF03831BEB58D100905C48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07CF03821BEB58D100905C48 /* Assets.xcassets */; };
-		07CF03881BEB58D200905C48 /* MrPill_Parsecoco WatchKit 1 App.app in Resources */ = {isa = PBXBuildFile; fileRef = 07CF03871BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 App.app */; };
-		07CF038E1BEB58D200905C48 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07CF038C1BEB58D200905C48 /* Interface.storyboard */; };
-		07CF03901BEB58D200905C48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07CF038F1BEB58D200905C48 /* Assets.xcassets */; };
-		07CF03941BEB58D200905C48 /* MrPill_Parsecoco WatchKit 1 Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 07CF037A1BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		07E15A2A1BC690E5009B5AB4 /* MedicineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A291BC690E5009B5AB4 /* MedicineTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		07E15A2C1BC6911D009B5AB4 /* MedicineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2B1BC6911D009B5AB4 /* MedicineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		07E15A2E1BC6914D009B5AB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2D1BC6914D009B5AB4 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -46,20 +39,6 @@
 			remoteGlobalIDString = 0774FA8A1BC68E63006FB847;
 			remoteInfo = MrPill_Parsecoco;
 		};
-		07CF03891BEB58D200905C48 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0774FA831BC68E63006FB847 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 07CF03861BEB58D100905C48;
-			remoteInfo = "MrPill_Parsecoco WatchKit 1 App";
-		};
-		07CF03921BEB58D200905C48 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0774FA831BC68E63006FB847 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 07CF03791BEB58D100905C48;
-			remoteInfo = "MrPill_Parsecoco WatchKit 1 Extension";
-		};
 		07ED31E41BD008A200A92933 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0774FA831BC68E63006FB847 /* Project object */;
@@ -83,7 +62,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				07CF03941BEB58D200905C48 /* MrPill_Parsecoco WatchKit 1 Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,13 +103,11 @@
 		0774FA9F1BC68E63006FB847 /* MrPill_ParsecocoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MrPill_ParsecocoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0774FAA31BC68E63006FB847 /* MrPill_ParsecocoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MrPill_ParsecocoTests.swift; sourceTree = "<group>"; };
 		0774FAA51BC68E63006FB847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		07CF037A1BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MrPill_Parsecoco WatchKit 1 Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07CF037D1BEB58D100905C48 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		07CF037E1BEB58D100905C48 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		07CF03801BEB58D100905C48 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		07CF03821BEB58D100905C48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07CF03841BEB58D100905C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		07CF03871BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MrPill_Parsecoco WatchKit 1 App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07CF038D1BEB58D200905C48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		07CF038F1BEB58D200905C48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07CF03911BEB58D200905C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,13 +149,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07CF03771BEB58D100905C48 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		07ED31DF1BD008A200A92933 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,8 +182,6 @@
 				0774FA9F1BC68E63006FB847 /* MrPill_ParsecocoTests.xctest */,
 				07ED31D61BD008A200A92933 /* App.app */,
 				07ED31E21BD008A200A92933 /* App Extension.appex */,
-				07CF037A1BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 Extension.appex */,
-				07CF03871BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -354,7 +321,6 @@
 			);
 			dependencies = (
 				07ED31F31BD008A200A92933 /* PBXTargetDependency */,
-				07CF03931BEB58D200905C48 /* PBXTargetDependency */,
 			);
 			name = MrPill_Parsecoco;
 			productName = MrPill_Parsecoco;
@@ -378,39 +344,6 @@
 			productName = MrPill_ParsecocoTests;
 			productReference = 0774FA9F1BC68E63006FB847 /* MrPill_ParsecocoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		07CF03791BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 07CF039A1BEB58D200905C48 /* Build configuration list for PBXNativeTarget "MrPill_Parsecoco WatchKit 1 Extension" */;
-			buildPhases = (
-				07CF03761BEB58D100905C48 /* Sources */,
-				07CF03771BEB58D100905C48 /* Frameworks */,
-				07CF03781BEB58D100905C48 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				07CF038A1BEB58D200905C48 /* PBXTargetDependency */,
-			);
-			name = "MrPill_Parsecoco WatchKit 1 Extension";
-			productName = "MrPill_Parsecoco WatchKit 1 Extension";
-			productReference = 07CF037A1BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
-		};
-		07CF03861BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 07CF03991BEB58D200905C48 /* Build configuration list for PBXNativeTarget "MrPill_Parsecoco WatchKit 1 App" */;
-			buildPhases = (
-				07CF03851BEB58D100905C48 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MrPill_Parsecoco WatchKit 1 App";
-			productName = "MrPill_Parsecoco WatchKit 1 App";
-			productReference = 07CF03871BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 App.app */;
-			productType = "com.apple.product-type.application.watchapp";
 		};
 		07ED31D51BD008A200A92933 /* App */ = {
 			isa = PBXNativeTarget;
@@ -463,12 +396,6 @@
 						CreatedOnToolsVersion = 7.0;
 						TestTargetID = 0774FA8A1BC68E63006FB847;
 					};
-					07CF03791BEB58D100905C48 = {
-						CreatedOnToolsVersion = 7.0.1;
-					};
-					07CF03861BEB58D100905C48 = {
-						CreatedOnToolsVersion = 7.0.1;
-					};
 					07ED31D51BD008A200A92933 = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
@@ -494,8 +421,6 @@
 				0774FA9E1BC68E63006FB847 /* MrPill_ParsecocoTests */,
 				07ED31D51BD008A200A92933 /* App */,
 				07ED31E11BD008A200A92933 /* App Extension */,
-				07CF03791BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 Extension */,
-				07CF03861BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 App */,
 			);
 		};
 /* End PBXProject section */
@@ -515,24 +440,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		07CF03781BEB58D100905C48 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07CF03831BEB58D100905C48 /* Assets.xcassets in Resources */,
-				07CF03881BEB58D200905C48 /* MrPill_Parsecoco WatchKit 1 App.app in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		07CF03851BEB58D100905C48 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07CF03901BEB58D200905C48 /* Assets.xcassets in Resources */,
-				07CF038E1BEB58D200905C48 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,15 +534,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07CF03761BEB58D100905C48 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07CF03811BEB58D100905C48 /* NotificationController.swift in Sources */,
-				07CF037F1BEB58D100905C48 /* InterfaceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		07ED31DE1BD008A200A92933 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -654,16 +552,6 @@
 			isa = PBXTargetDependency;
 			target = 0774FA8A1BC68E63006FB847 /* MrPill_Parsecoco */;
 			targetProxy = 0774FAA01BC68E63006FB847 /* PBXContainerItemProxy */;
-		};
-		07CF038A1BEB58D200905C48 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 07CF03861BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 App */;
-			targetProxy = 07CF03891BEB58D200905C48 /* PBXContainerItemProxy */;
-		};
-		07CF03931BEB58D200905C48 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 07CF03791BEB58D100905C48 /* MrPill_Parsecoco WatchKit 1 Extension */;
-			targetProxy = 07CF03921BEB58D200905C48 /* PBXContainerItemProxy */;
 		};
 		07ED31E51BD008A200A92933 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -849,58 +737,6 @@
 			};
 			name = Release;
 		};
-		07CF03951BEB58D200905C48 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "MrPill_Parsecoco WatchKit 1 Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "appcamp.MrPill-Parsecoco.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		07CF03961BEB58D200905C48 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "MrPill_Parsecoco WatchKit 1 Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "appcamp.MrPill-Parsecoco.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		07CF03971BEB58D200905C48 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				IBSC_MODULE = MrPill_Parsecoco_WatchKit_1_Extension;
-				INFOPLIST_FILE = "MrPill_Parsecoco WatchKit 1 App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "appcamp.MrPill-Parsecoco.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Debug;
-		};
-		07CF03981BEB58D200905C48 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				IBSC_MODULE = MrPill_Parsecoco_WatchKit_1_Extension;
-				INFOPLIST_FILE = "MrPill_Parsecoco WatchKit 1 App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "appcamp.MrPill-Parsecoco.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Release;
-		};
 		07ED31F51BD008A200A92933 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -990,22 +826,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		07CF03991BEB58D200905C48 /* Build configuration list for PBXNativeTarget "MrPill_Parsecoco WatchKit 1 App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				07CF03971BEB58D200905C48 /* Debug */,
-				07CF03981BEB58D200905C48 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		07CF039A1BEB58D200905C48 /* Build configuration list for PBXNativeTarget "MrPill_Parsecoco WatchKit 1 Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				07CF03951BEB58D200905C48 /* Debug */,
-				07CF03961BEB58D200905C48 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 		07ED31F91BD008A200A92933 /* Build configuration list for PBXNativeTarget "App Extension" */ = {
 			isa = XCConfigurationList;

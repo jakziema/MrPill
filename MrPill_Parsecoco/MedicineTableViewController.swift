@@ -39,7 +39,7 @@ class MedicineTableViewController: UITableViewController{
         
         
         self.tableView.addSubview(self.refreshCtrl)
-  
+        
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
@@ -57,16 +57,14 @@ class MedicineTableViewController: UITableViewController{
     override func viewWillAppear(animated: Bool) {
         if Reachability.isConnectedToNetwork() {
             //fetching data from Parse
-            print("Jest internet")
             
             fetchFromParse()
             fetchFromCoreData()
+
             tableViewMedicines.reloadData()
-            
-            
-            
+
         } else {
-            print("Brak internetu")
+            
             //fetching data from Core data
             fetchFromCoreData()
             logOutButton.enabled = false
@@ -110,45 +108,46 @@ class MedicineTableViewController: UITableViewController{
                     if let  name = object["medicineName"] as? String,
                         amount = object["amountQuantity"] as? String,
                         time = object["time"] as? String
-                        {
+                    {
+                        
+                        let predicate = NSPredicate(format: "name = %@", name)
+                        self.fetchRequest.predicate = predicate
+                        
+                        do{
+                            let fetchedEntities = try self.context.executeFetchRequest(self.fetchRequest) as! [Medicine]
+                            //save to  Core Data
                             
-                            let predicate = NSPredicate(format: "name = %@", name)
-                            self.fetchRequest.predicate = predicate
                             
-                            do{
-                                let fetchedEntities = try self.context.executeFetchRequest(self.fetchRequest) as! [Medicine]
-                                //save to  Core Data
+                            if fetchedEntities.count <= 0 {
+                                let medicine = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
+                                medicine.setValue(name, forKey: "name")
+                                medicine.setValue(amount, forKey: "amount")
+                                medicine.setValue(time, forKey: "time")
                                 
-                                
-                                if fetchedEntities.count <= 0 {
-                                    let medicine = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
-                                    medicine.setValue(name, forKey: "name")
-                                    medicine.setValue(amount, forKey: "amount")
-                                    medicine.setValue(time, forKey: "time")
-                   
-                                }
-                                
-                                
-                                
-                                
-                            } catch let error as NSError{
-                                print(error)
                             }
+                            
+                        } catch let error as NSError{
+                            print(error)
+                        }
                     }
                 }
                 
-                
             }
-            do {
-                
-                try self.context.save()
-                print("Context.save")
-                
-                
-            } catch let error as NSError {
-                print("Could not save \(error), \(error.userInfo)")
-            }
+
+                do {
+                    
+                    try self.context.save()
+                    print("Context.save")
+                    
+                    
+                } catch let error as NSError {
+                    print("Could not save \(error), \(error.userInfo)")
+                }
+            
+            
+
         }
+        
         
         
     }
@@ -160,12 +159,12 @@ class MedicineTableViewController: UITableViewController{
             
             medicines = results  as! [Medicine]
             print("FetchFromCoreData")
-           tableViewMedicines.reloadData()
-  
+            tableViewMedicines.reloadData()
+            
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-   
+        
     }
- 
+    
 }

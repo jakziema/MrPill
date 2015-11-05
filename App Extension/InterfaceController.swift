@@ -25,7 +25,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
-       
+        
         
     }
     
@@ -55,7 +55,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }, errorHandler: {  (error ) -> Void in
                 print("We got an error from our watch device : " + error.domain)
                 
-            
+                
         })
         
         
@@ -74,28 +74,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }, errorHandler: {  (error ) -> Void in
                 print("We got an error from our watch device : " + error.domain)
                 
-            
+                
         })
         
         
-//        let iNeedCoreData = ["message": "iNeedCoreData"]
-//        
-//        session.sendMessage(iNeedCoreData, replyHandler: { (content:[String: AnyObject]) -> Void in
-//            
-//            if let receivedMessage = content["reply"] {
-//                print(receivedMessage)
-//            }
-//            
-//            }) { (error) -> Void in
-//                print(error.userInfo)
-//        }
-  
     }
     
-//    func session(session: WCSession, didReceiveFile file: WCSessionFile) {
-//        print(file)
-//    }
- 
     
     func reloadTable() {
         self.table.setNumberOfRows(medicines.count, withRowType: "tableRowController")
