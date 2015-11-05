@@ -58,6 +58,7 @@ class MedicineTableViewController: UITableViewController{
         if Reachability.isConnectedToNetwork() {
             //fetching data from Parse
             print("Jest internet")
+            
             fetchFromParse()
             fetchFromCoreData()
             tableViewMedicines.reloadData()
@@ -124,10 +125,10 @@ class MedicineTableViewController: UITableViewController{
                                     medicine.setValue(name, forKey: "name")
                                     medicine.setValue(amount, forKey: "amount")
                                     medicine.setValue(time, forKey: "time")
-                                    
-                                    
-                                    
+                   
                                 }
+                                
+                                
                                 
                                 
                             } catch let error as NSError{
@@ -135,32 +136,32 @@ class MedicineTableViewController: UITableViewController{
                             }
                     }
                 }
-            } else {
-                let ac = UIAlertController(title: "Messagge", message: "Nie przygotowano jeszcze listy leków", preferredStyle: UIAlertControllerStyle.Alert)
-                ac.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(ac, animated: true, completion: nil)
+                
+                
+            }
+            do {
+                
+                try self.context.save()
+                print("Context.save")
+                
+                
+            } catch let error as NSError {
+                print("Could not save \(error), \(error.userInfo)")
             }
         }
         
-        do {
-            
-            try self.context.save()
-            print("Context.save")
-
-            
-        } catch let error as NSError {
-            print("Could not save \(error), \(error.userInfo)")
-        }
+        
     }
     
     func fetchFromCoreData() {
         
         do {
             let results = try context.executeFetchRequest(fetchRequest)
+            
             medicines = results  as! [Medicine]
             print("FetchFromCoreData")
-            tableViewMedicines.reloadData()
-            
+           tableViewMedicines.reloadData()
+  
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
