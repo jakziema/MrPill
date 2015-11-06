@@ -61,7 +61,7 @@ class MedicineTableViewController: UITableViewController{
             fetchFromParse()
             fetchFromCoreData()
 
-            tableViewMedicines.reloadData()
+//            tableViewMedicines.reloadData()
 
         } else {
             
@@ -123,15 +123,15 @@ class MedicineTableViewController: UITableViewController{
                                 medicine.setValue(name, forKey: "name")
                                 medicine.setValue(amount, forKey: "amount")
                                 medicine.setValue(time, forKey: "time")
-                                
+     
                             }
-                            
+  
                         } catch let error as NSError{
                             print(error)
                         }
                     }
                 }
-                
+   
             }
 
                 do {
@@ -143,13 +143,10 @@ class MedicineTableViewController: UITableViewController{
                 } catch let error as NSError {
                     print("Could not save \(error), \(error.userInfo)")
                 }
-            
-            
-
+  
+//                self.fetchFromCoreData()
         }
-        
-        
-        
+    
     }
     
     func fetchFromCoreData() {
@@ -164,6 +161,7 @@ class MedicineTableViewController: UITableViewController{
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        
         
     }
     
