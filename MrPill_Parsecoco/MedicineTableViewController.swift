@@ -60,9 +60,8 @@ class MedicineTableViewController: UITableViewController{
             
             fetchFromParse()
             fetchFromCoreData()
-
-//            tableViewMedicines.reloadData()
-
+            
+            
         } else {
             
             //fetching data from Core data
@@ -123,30 +122,30 @@ class MedicineTableViewController: UITableViewController{
                                 medicine.setValue(name, forKey: "name")
                                 medicine.setValue(amount, forKey: "amount")
                                 medicine.setValue(time, forKey: "time")
-     
+                                
                             }
-  
+                            
                         } catch let error as NSError{
                             print(error)
                         }
                     }
                 }
-   
+                
             }
-
-                do {
-                    
-                    try self.context.save()
-                    print("Context.save")
-                    
-                    
-                } catch let error as NSError {
-                    print("Could not save \(error), \(error.userInfo)")
-                }
-  
-//                self.fetchFromCoreData()
+            
+            do {
+                
+                try self.context.save()
+                print("Context.save")
+                
+                
+            } catch let error as NSError {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+            
+            self.fetchFromCoreData()
         }
-    
+        
     }
     
     func fetchFromCoreData() {
@@ -156,12 +155,10 @@ class MedicineTableViewController: UITableViewController{
             
             medicines = results  as! [Medicine]
             print("FetchFromCoreData")
-            tableViewMedicines.reloadData()
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-        
         
     }
     
