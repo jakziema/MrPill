@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //NOTIFICATIONS
+        
+
         
         Parse.setApplicationId("YWOF5qUaH9MvmTsnOXJ1BI8V3fCem4rHuSsLuGKg", clientKey: "jE5GMMR3O9iVqsYdgUyNvKxcaTVLxXogLjTjWTpm")
         
@@ -30,10 +33,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             session.activateSession()
         }
         
+        notifications()
+        
+        
+        
+        
+        
+        
 
 
         return true
     }
+    
+    func notifications() {
+        
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge]
+        
+        let notification = UILocalNotification()
+        notification.alertBody = "Zapomniałeś wziąc lek"
+        notification.alertAction = "Zobacz listę"
+        //2 minuty od teraz
+        notification.fireDate = NSDate().dateByAddingTimeInterval( 1 * 60 )
+        print(notification.fireDate)
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.category = "MEDICINE_CATEGORY"
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+        let takeAction = UIMutableUserNotificationAction()
+        takeAction.identifier = "takePill"
+        takeAction.title = "Biorę"
+        takeAction.activationMode = UIUserNotificationActivationMode.Background
+        takeAction.destructive = false
+        takeAction.authenticationRequired = false
+        
+        let remindLaterAction = UIMutableUserNotificationAction()
+        remindLaterAction.identifier = "remindLater"
+        remindLaterAction.title = "Remind in 30 minutes"
+        remindLaterAction.activationMode = UIUserNotificationActivationMode.Foreground
+        remindLaterAction.destructive = false
+        remindLaterAction.authenticationRequired = false
+        
+        //arrays of actions
+        let actionsArray = NSArray(objects: takeAction, remindLaterAction)
+        let actionsArrayMinimal = NSArray(objects: takeAction, remindLaterAction)
+        
+        //category of notification
+        let medicine_category = UIMutableUserNotificationCategory()
+        medicine_category.identifier = "MEDICINE_CATEGORY"
+        medicine_category.setActions(actionsArray as? [UIUserNotificationAction], forContext: UIUserNotificationActionContext.Default)
+        medicine_category.setActions(actionsArrayMinimal as? [UIUserNotificationAction], forContext: UIUserNotificationActionContext.Minimal)
+        
+        //registering notifications
+        let categoriesForSettings = NSSet(objects: medicine_category)
+        let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as? Set<UIUserNotificationCategory>)
+        UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
+    }
+    
+    
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         // handle message

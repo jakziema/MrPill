@@ -53,6 +53,7 @@ class MedicineTableViewController: UITableViewController{
     func handleRefresh(refreshControl: UIRefreshControl) {
         
         fetchFromCoreData()
+        
         refreshControl.endRefreshing()
     }
     
@@ -131,6 +132,16 @@ class MedicineTableViewController: UITableViewController{
                             let predicate = NSPredicate(format: "name = %@", name)
                             self.fetchRequest.predicate = predicate
                             
+                        let dateFormatter = NSDateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                        var todayDateString = dateFormatter.stringFromDate(NSDate())
+                        todayDateString.replaceRange(Range<String.Index>(start: todayDateString.endIndex.advancedBy(-5), end: todayDateString.endIndex), with: time)
+                        var stringDate = todayDateString
+                        
+                        //zamiana do NSDate
+                        //let newDate = dateFormatter.dateFromString(todayDateString)
+                        
+                        
                             do{
                                 let fetchedEntities = try self.context.executeFetchRequest(self.fetchRequest) as! [Medicine]
                                 //save to  Core Data
@@ -140,7 +151,7 @@ class MedicineTableViewController: UITableViewController{
                                     let medicine = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
                                     medicine.setValue(name, forKey: "name")
                                     medicine.setValue(amount, forKey: "amount")
-                                    medicine.setValue(time, forKey: "time")
+                                    medicine.setValue(stringDate, forKey: "time")
                
                                 }
        
