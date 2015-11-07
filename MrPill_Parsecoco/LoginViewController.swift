@@ -20,21 +20,24 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBarHidden = true;
+
+        
         if let user = PFUser.currentUser() {
             if user.isAuthenticated() {
                 self.performSegueWithIdentifier(tableViewWallSegue, sender: nil)
             }
         }
-        
-    navigationController?.navigationBar.backgroundColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
-        
-
 
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBarHidden = true;
+
     }
+    
+    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)

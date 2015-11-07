@@ -33,13 +33,21 @@ class MedicineTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //background
-        tableView.backgroundView = UIImageView(image: UIImage(named: "background.png"))
+        navigationController?.navigationBar.barTintColor = UIColor(red: CGFloat(243/255.0),green: CGFloat(84/255.0),blue: CGFloat(67/255.0),alpha: CGFloat(1.0))
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        
-        
+        //remove extra separators
+        tableView.tableFooterView = UIView(frame:CGRectZero)
+
+
         self.tableView.addSubview(self.refreshCtrl)
   
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
@@ -52,6 +60,9 @@ class MedicineTableViewController: UITableViewController{
     @IBAction func logOutPressed(sender: AnyObject) {
         PFUser.logOut()
         navigationController?.popToRootViewControllerAnimated(true)
+        
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -93,6 +104,13 @@ class MedicineTableViewController: UITableViewController{
         // Configure the cell...
         cell.medicineLabel.text = medicines[indexPath.row].name
         cell.amountLabel.text = medicines[indexPath.row].amount
+        cell.timeLabel.text = medicines[indexPath.row].time
+        
+        // full width of the separator
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
+        
         return cell
     }
     
@@ -106,7 +124,9 @@ class MedicineTableViewController: UITableViewController{
                 for object in objects! {
                     
                     if let  name = object["medicineName"] as? String,
-                        amount = object["amountQuantity"] as? String {
+                        amount = object["amountQuantity"] as? String,
+                        time = object["time"] as? String
+                    {
                             
                             let predicate = NSPredicate(format: "name = %@", name)
                             self.fetchRequest.predicate = predicate
@@ -120,22 +140,16 @@ class MedicineTableViewController: UITableViewController{
                                     let medicine = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
                                     medicine.setValue(name, forKey: "name")
                                     medicine.setValue(amount, forKey: "amount")
-                                    
-                                    
-                                    
+                                    medicine.setValue(time, forKey: "time")
+               
                                 }
-                                
-                                
+       
                             } catch let error as NSError{
                                 print(error)
                             }
                     }
                 }
-            } else {
-                let ac = UIAlertController(title: "Messagge", message: "Nie przygotowano jeszcze listy leków", preferredStyle: UIAlertControllerStyle.Alert)
-                ac.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(ac, animated: true, completion: nil)
-            }
+            } 
         }
         
         do {

@@ -3,8 +3,9 @@
     <entity name="Medicine" representedClassName=".Medicine" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Medicine" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Medicine" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>
