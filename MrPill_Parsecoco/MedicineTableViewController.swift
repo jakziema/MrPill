@@ -169,6 +169,9 @@ class MedicineTableViewController: UITableViewController{
     func fetchFromCoreData() {
         
         do {
+            let primarySortDescriptor = NSSortDescriptor(key: "time", ascending: true)
+            fetchRequest.sortDescriptors = [primarySortDescriptor]
+            
             let results = try context.executeFetchRequest(fetchRequest)
             medicines = results  as! [Medicine]
             print("FetchFromCoreData")

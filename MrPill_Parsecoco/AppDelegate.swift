@@ -23,10 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        //NOTIFICATIONS
-        
+        //UIApplication.sharedApplication().cancelAllLocalNotifications()
 
-        
         Parse.setApplicationId("YWOF5qUaH9MvmTsnOXJ1BI8V3fCem4rHuSsLuGKg", clientKey: "jE5GMMR3O9iVqsYdgUyNvKxcaTVLxXogLjTjWTpm")
         
         if(WCSession.isSupported()) {
@@ -36,32 +34,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         }
         
         
-        let primarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [primarySortDescriptor]
+        
 
+        let primarySortDescriptor = NSSortDescriptor(key: "time", ascending: true)
+        fetchRequest.sortDescriptors = [primarySortDescriptor]
+        
         do {
             let results = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Medicine]
             
             for medicine in results {
                 let notification = UILocalNotification()
-                notification.alertBody = "Weź: " +  medicine.name! + "Ilość: " + medicine.amount!
-                print(medicine.name!)
+                notification.alertBody = "Weź: " +  medicine.name! + " Ilość: " + medicine.amount!
                 notification.alertAction = "Zobacz listę"
-                //2 minuty od teraz
+                
                 
                 
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
                 var todayDateString = dateFormatter.stringFromDate(NSDate())
+                
                 todayDateString.replaceRange(Range<String.Index>(start: todayDateString.endIndex.advancedBy(-5), end: todayDateString.endIndex), with: medicine.time!)
                 var stringDate = todayDateString
-                print(stringDate)
+                
                 let newDate = dateFormatter.dateFromString(todayDateString)
                 
                 
-                //NSDate().dateByAddingTimeInterval( 1 * 60 )
-                notification.fireDate = newDate?.dateByAddingTimeInterval(60 * 60)
+                //notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 )
+                notification.fireDate = newDate
                 print(notification.fireDate)
+                notification.repeatInterval = NSCalendarUnit.NSDayCalendarUnit
                 notification.soundName = UILocalNotificationDefaultSoundName
                 notification.category = "MEDICINE_CATEGORY"
                 
@@ -73,12 +74,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+
         
         
         
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge]
-        
-        
         
         let takeAction = UIMutableUserNotificationAction()
         takeAction.identifier = "takePill"
