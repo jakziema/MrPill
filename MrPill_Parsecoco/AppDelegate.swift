@@ -44,11 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             
             for medicine in results {
                 let notification = UILocalNotification()
-                notification.alertBody = "Weź: " +  medicine.name! + " Ilość: " + medicine.amount!
-                notification.alertAction = "Zobacz listę"
-                
-                
-                
+                notification.alertTitle = "medicines"
+                notification.alertBody = "TAKE: " +  medicine.name! + " AMOUNT: " + medicine.amount!
+                notification.alertAction = "View list"
+
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
                 var todayDateString = dateFormatter.stringFromDate(NSDate())
@@ -57,8 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 var stringDate = todayDateString
                 
                 let newDate = dateFormatter.dateFromString(todayDateString)
-                
-                
+
                 //notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 )
                 notification.fireDate = newDate
                 print(notification.fireDate)
@@ -90,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         let remindLaterAction = UIMutableUserNotificationAction()
         remindLaterAction.identifier = "remindLater"
         remindLaterAction.title = "Remind in 30 minutes"
-        remindLaterAction.activationMode = UIUserNotificationActivationMode.Foreground
+        remindLaterAction.activationMode = UIUserNotificationActivationMode.Background
         remindLaterAction.destructive = false
         remindLaterAction.authenticationRequired = false
         
@@ -162,6 +160,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             }
             
         }
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        if identifier == "remindLater" {
+            
+            print("remindLater")
+            notification.fireDate = NSDate().dateByAddingTimeInterval(60)
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+
+        } else if identifier == "takePill" {
+            print("Pill taken")
+            
+            
+        }
+        
+        completionHandler()
     }
 
     func applicationWillResignActive(application: UIApplication) {
