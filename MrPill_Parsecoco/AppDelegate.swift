@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     var window: UIWindow?
     var session: WCSession!
+    let fetchRequest = NSFetchRequest(entityName: "Medicine")
+    
     
     
     
@@ -33,32 +35,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             session.activateSession()
         }
         
-        notifications()
         
-        
-        
-        
-        
-        
+        let primarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [primarySortDescriptor]
 
-
-        return true
-    }
-    
-    func notifications() {
+        do {
+            let results = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Medicine]
+            
+            for medicine in results {
+                let notification = UILocalNotification()
+                notification.alertBody = "Weź: " +  medicine.name! + "Ilość: " + medicine.amount!
+                print(medicine.name!)
+                notification.alertAction = "Zobacz listę"
+                //2 minuty od teraz
+                
+                
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                var todayDateString = dateFormatter.stringFromDate(NSDate())
+                todayDateString.replaceRange(Range<String.Index>(start: todayDateString.endIndex.advancedBy(-5), end: todayDateString.endIndex), with: medicine.time!)
+                var stringDate = todayDateString
+                print(stringDate)
+                let newDate = dateFormatter.dateFromString(todayDateString)
+                
+                
+                //NSDate().dateByAddingTimeInterval( 1 * 60 )
+                notification.fireDate = newDate?.dateByAddingTimeInterval(60 * 60)
+                print(notification.fireDate)
+                notification.soundName = UILocalNotificationDefaultSoundName
+                notification.category = "MEDICINE_CATEGORY"
+                
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                
+            }
+            
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        
         
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge]
         
-        let notification = UILocalNotification()
-        notification.alertBody = "Zapomniałeś wziąc lek"
-        notification.alertAction = "Zobacz listę"
-        //2 minuty od teraz
-        notification.fireDate = NSDate().dateByAddingTimeInterval( 1 * 60 )
-        print(notification.fireDate)
-        notification.soundName = UILocalNotificationDefaultSoundName
-        notification.category = "MEDICINE_CATEGORY"
         
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
         
         let takeAction = UIMutableUserNotificationAction()
         takeAction.identifier = "takePill"
@@ -88,7 +108,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         let categoriesForSettings = NSSet(objects: medicine_category)
         let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as? Set<UIUserNotificationCategory>)
         UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
+        
+
+
+        return true
     }
+    
+    
+    
+   
     
     
     

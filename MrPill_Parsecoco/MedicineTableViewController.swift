@@ -38,16 +38,16 @@ class MedicineTableViewController: UITableViewController{
         
         //remove extra separators
         tableView.tableFooterView = UIView(frame:CGRectZero)
-
-
+        
+        
         self.tableView.addSubview(self.refreshCtrl)
-  
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-
+        
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
@@ -128,51 +128,43 @@ class MedicineTableViewController: UITableViewController{
                         amount = object["amountQuantity"] as? String,
                         time = object["time"] as? String
                     {
+                        
+                        let predicate = NSPredicate(format: "name = %@", name)
+                        self.fetchRequest.predicate = predicate
+                
+                        do{
+                            let fetchedEntities = try self.context.executeFetchRequest(self.fetchRequest) as! [Medicine]
+                            //save to  Core Data
                             
-                            let predicate = NSPredicate(format: "name = %@", name)
-                            self.fetchRequest.predicate = predicate
                             
-                        let dateFormatter = NSDateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                        var todayDateString = dateFormatter.stringFromDate(NSDate())
-                        todayDateString.replaceRange(Range<String.Index>(start: todayDateString.endIndex.advancedBy(-5), end: todayDateString.endIndex), with: time)
-                        var stringDate = todayDateString
-                        
-                        //zamiana do NSDate
-                        //let newDate = dateFormatter.dateFromString(todayDateString)
-                        
-                        
-                            do{
-                                let fetchedEntities = try self.context.executeFetchRequest(self.fetchRequest) as! [Medicine]
-                                //save to  Core Data
+                            if fetchedEntities.count <= 0 {
+                                let medicine = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
+                                medicine.setValue(name, forKey: "name")
+                                medicine.setValue(amount, forKey: "amount")
+                                medicine.setValue(time, forKey: "time")
                                 
-                                
-                                if fetchedEntities.count <= 0 {
-                                    let medicine = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
-                                    medicine.setValue(name, forKey: "name")
-                                    medicine.setValue(amount, forKey: "amount")
-                                    medicine.setValue(stringDate, forKey: "time")
-               
-                                }
-       
-                            } catch let error as NSError{
-                                print(error)
                             }
+                            
+                        } catch let error as NSError{
+                            print(error)
+                        }
                     }
                 }
-            } 
+            }
         }
         
         do {
             
             try self.context.save()
             print("Context.save")
-
+            
             
         } catch let error as NSError {
             print("Could not save \(error), \(error.userInfo)")
         }
     }
+    
+    
     
     func fetchFromCoreData() {
         
@@ -185,7 +177,7 @@ class MedicineTableViewController: UITableViewController{
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-   
+        
     }
- 
+    
 }
