@@ -13,6 +13,7 @@ import Foundation
 class NotificationController: WKUserNotificationInterfaceController {
 
     @IBOutlet var notificationAlertLabel: WKInterfaceLabel!
+    @IBOutlet var medicineLabel: WKInterfaceLabel!
     
     
     override init() {
@@ -34,9 +35,9 @@ class NotificationController: WKUserNotificationInterfaceController {
 
     
     override func didReceiveLocalNotification(localNotification: UILocalNotification, withCompletion completionHandler: ((WKUserNotificationInterfaceType) -> Void)) {
-        if localNotification.alertTitle == "medicine" {
-            notificationAlertLabel.setText("Medicine1")
-        }
+        
+        medicineLabel.setText(localNotification.alertBody)
+        
         completionHandler(.Custom)
     }
     

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -13,9 +13,9 @@
                         <table alignment="left" id="4PQ-62-eHx">
                             <items>
                                 <tableRow identifier="tableRowController" id="OCL-5I-Cep" customClass="tableRowController" customModule="App_Extension">
-                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="GqM-AY-Z0W">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="GqM-AY-Z0W">
                                         <items>
-                                            <label width="136" height="11" alignment="left" text="afsda" id="wqd-EB-vtF">
+                                            <label width="136" height="14" alignment="left" text="afsda" id="wqd-EB-vtF">
                                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="font" style="UICTFontTextStyleTitle1"/>
                                             </label>
@@ -44,7 +44,7 @@
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label height="39.5" alignment="left" text="Remember about your pill!" numberOfLines="2" id="IdU-wH-bcW"/>
+                        <label width="136" height="39.5" alignment="left" text="It's time to take your pill!" numberOfLines="2" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="MEDICINE_CATEGORY" id="JfB-70-Muf"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,7 +59,15 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="App" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="App" customModuleProvider="target">
+                    <items>
+                        <label width="136" alignment="left" text="Medicine Label" numberOfLines="4" id="aIT-2s-eYv"/>
+                    </items>
+                    <color key="backgroundColor" red="0.98431372549019602" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="medicineLabel" destination="aIT-2s-eYv" id="ct3-We-FCV"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="463" y="642"/>
         </scene>

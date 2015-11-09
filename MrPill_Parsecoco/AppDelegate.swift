@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             
             for medicine in results {
                 let notification = UILocalNotification()
-                notification.alertTitle = "medicines"
+                notification.alertTitle = "Mr Pill"
                 notification.alertBody = "TAKE: " +  medicine.name! + " AMOUNT: " + medicine.amount!
                 notification.alertAction = "View list"
 

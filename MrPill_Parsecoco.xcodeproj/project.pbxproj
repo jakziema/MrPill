@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		072DEF841BE503CE00A98AB0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 072DEF821BE503CE00A98AB0 /* Model.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
-		07301CB71BE521FC00838A34 /* Medicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07301CB61BE521FC00838A34 /* Medicine.swift */; settings = {ASSET_TAGS = (); }; };
-		07301CBB1BE5338800838A34 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07301CBA1BE5338800838A34 /* Reachability.swift */; settings = {ASSET_TAGS = (); }; };
+		072DEF841BE503CE00A98AB0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 072DEF821BE503CE00A98AB0 /* Model.xcdatamodeld */; };
+		07301CB71BE521FC00838A34 /* Medicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07301CB61BE521FC00838A34 /* Medicine.swift */; };
+		07301CBB1BE5338800838A34 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07301CBA1BE5338800838A34 /* Reachability.swift */; };
 		0774FA8F1BC68E63006FB847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0774FA8E1BC68E63006FB847 /* AppDelegate.swift */; };
 		0774FA941BC68E63006FB847 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0774FA921BC68E63006FB847 /* Main.storyboard */; };
 		0774FA961BC68E63006FB847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774FA951BC68E63006FB847 /* Assets.xcassets */; };
 		0774FA991BC68E63006FB847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0774FA971BC68E63006FB847 /* LaunchScreen.storyboard */; };
 		0774FAA41BC68E63006FB847 /* MrPill_ParsecocoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0774FAA31BC68E63006FB847 /* MrPill_ParsecocoTests.swift */; };
-		07E15A2A1BC690E5009B5AB4 /* MedicineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A291BC690E5009B5AB4 /* MedicineTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		07E15A2C1BC6911D009B5AB4 /* MedicineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2B1BC6911D009B5AB4 /* MedicineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		07E15A2E1BC6914D009B5AB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2D1BC6914D009B5AB4 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		07E15A301BC6917B009B5AB4 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2F1BC6917B009B5AB4 /* UIViewControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
+		07E15A2A1BC690E5009B5AB4 /* MedicineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A291BC690E5009B5AB4 /* MedicineTableViewCell.swift */; };
+		07E15A2C1BC6911D009B5AB4 /* MedicineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2B1BC6911D009B5AB4 /* MedicineTableViewController.swift */; };
+		07E15A2E1BC6914D009B5AB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2D1BC6914D009B5AB4 /* LoginViewController.swift */; };
+		07E15A301BC6917B009B5AB4 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E15A2F1BC6917B009B5AB4 /* UIViewControllerExtension.swift */; };
 		07ED31DC1BD008A200A92933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07ED31DB1BD008A200A92933 /* Assets.xcassets */; };
 		07ED31E31BD008A200A92933 /* App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 07ED31E21BD008A200A92933 /* App Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		07ED31EA1BD008A200A92933 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED31E91BD008A200A92933 /* InterfaceController.swift */; };
@@ -26,8 +26,8 @@
 		07ED31EE1BD008A200A92933 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED31ED1BD008A200A92933 /* NotificationController.swift */; };
 		07ED31F01BD008A200A92933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07ED31EF1BD008A200A92933 /* Assets.xcassets */; };
 		07ED31F41BD008A200A92933 /* App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 07ED31D61BD008A200A92933 /* App.app */; };
-		07ED31FE1BD009CF00A92933 /* tableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED31FD1BD009CF00A92933 /* tableRowController.swift */; settings = {ASSET_TAGS = (); }; };
-		07ED32011BD031EB00A92933 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07ED31D81BD008A200A92933 /* Interface.storyboard */; settings = {ASSET_TAGS = (); }; };
+		07ED31FE1BD009CF00A92933 /* tableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ED31FD1BD009CF00A92933 /* tableRowController.swift */; };
+		07ED32011BD031EB00A92933 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07ED31D81BD008A200A92933 /* Interface.storyboard */; };
 		3A3BB8B5354F5E3F87E8CA01 /* Pods_MrPill_Parsecoco.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904CF208565802177D297129 /* Pods_MrPill_Parsecoco.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
