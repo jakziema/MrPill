@@ -12,5 +12,6 @@ import WatchKit
 class tableRowController: NSObject {
     @IBOutlet var medicineLabel: WKInterfaceLabel!
     @IBOutlet var amountLabel: WKInterfaceLabel!
+    @IBOutlet var timeLabel: WKInterfaceLabel!
 
 }

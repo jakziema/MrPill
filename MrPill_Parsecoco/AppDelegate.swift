@@ -118,47 +118,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     
     
+//    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+//        // handle message
+//        var medicines = [String]()
+//        var quantity = [String]()
+//        
+//        if let receivedMessage = message["Value"] {
+//            if receivedMessage as! String == "Query" {
+//                let query = PFQuery(className: (PFUser.currentUser()?.username)!)
+//                
+//                query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//                    
+//                    if error == nil {
+//                        for medicine in objects! {
+//                            if let zawartosc = medicine["medicineName"] as? String {
+//                                medicines.append(zawartosc)
+//                            }
+//                        }
+//                    }
+//                    // sending dict
+//                    replyHandler(["medicines": medicines])
+//                })
+//                
+//                
+//                
+//            } else if receivedMessage as! String == "Amount" {
+//                let query = PFQuery(className: (PFUser.currentUser()?.username)!)
+//                
+//                query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//                    
+//                    if error == nil {
+//                        for quantity1 in objects! {
+//                            if let zawartosc = quantity1["amountQuantity"] as? String {
+//                                quantity.append(zawartosc)
+//                            }
+//                        }
+//                    }
+//                    // sending dict
+//                    replyHandler(["quantity": quantity])
+//                })
+//            }
+//            
+//        }
+//    }
+    
+    //MARK: Sending Core Data
+    
+    var medicinesArray = [String]()
+    var amountArray = [String]()
+    var timeArray = [String]()
+    var dict = [String: [String]]()
+    
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        // handle message
-        var medicines = [String]()
-        var quantity = [String]()
-        
         if let receivedMessage = message["Value"] {
-            if receivedMessage as! String == "Query" {
-                let query = PFQuery(className: (PFUser.currentUser()?.username)!)
-                
-                query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+            if receivedMessage as! String == "CoreData" {
+                do {
+                    let results = try managedObjectContext.executeFetchRequest(fetchRequest)
                     
-                    if error == nil {
-                        for medicine in objects! {
-                            if let zawartosc = medicine["medicineName"] as? String {
-                                medicines.append(zawartosc)
-                            }
-                        }
+                    for medicine in results {
+                        medicinesArray.append(medicine.name!)
+                        amountArray.append(medicine.amount!!)
+                        timeArray.append(medicine.time!!)
                     }
-                    // sending dict
-                    replyHandler(["medicines": medicines])
-                })
-                
-                
-                
-            } else if receivedMessage as! String == "Amount" {
-                let query = PFQuery(className: (PFUser.currentUser()?.username)!)
-                
-                query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                     
-                    if error == nil {
-                        for quantity1 in objects! {
-                            if let zawartosc = quantity1["amountQuantity"] as? String {
-                                quantity.append(zawartosc)
-                            }
-                        }
-                    }
-                    // sending dict
-                    replyHandler(["quantity": quantity])
-                })
+                    dict = ["medicines": medicinesArray, "amount": amountArray, "time": timeArray]
+                    
+                    replyHandler(["reply": dict])
+                }
+                
+                catch let error as NSError {
+                    print(error.userInfo)
+                }
             }
-            
         }
     }
     
@@ -170,6 +201,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
 
         } else if identifier == "takePill" {
+            
             print("Pill taken")
             
             

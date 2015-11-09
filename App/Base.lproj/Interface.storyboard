@@ -15,11 +15,16 @@
                                 <tableRow identifier="tableRowController" id="OCL-5I-Cep" customClass="tableRowController" customModule="App_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="GqM-AY-Z0W">
                                         <items>
-                                            <label width="136" height="14" alignment="left" text="afsda" id="wqd-EB-vtF">
-                                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="font" style="UICTFontTextStyleTitle1"/>
-                                            </label>
-                                            <label width="136" height="27" alignment="left" text="fdafds" numberOfLines="3" id="Phz-ac-CLh">
+                                            <group width="1" alignment="left" id="tfT-cu-aB0">
+                                                <items>
+                                                    <label width="72" height="24" alignment="left" text="Medicine" id="wqd-EB-vtF">
+                                                        <color key="textColor" red="0.98431372549019602" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="font" style="UICTFontTextStyleTitle1"/>
+                                                    </label>
+                                                    <label alignment="left" text="12:45" id="QHf-0G-mfh"/>
+                                                </items>
+                                            </group>
+                                            <label width="136" height="27" alignment="left" text="Amount" numberOfLines="3" id="Phz-ac-CLh">
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                         </items>
@@ -27,6 +32,7 @@
                                     <connections>
                                         <outlet property="amountLabel" destination="Phz-ac-CLh" id="fIA-Pa-iGd"/>
                                         <outlet property="medicineLabel" destination="wqd-EB-vtF" id="mzf-UX-e96"/>
+                                        <outlet property="timeLabel" destination="QHf-0G-mfh" id="AUT-eP-Vug"/>
                                     </connections>
                                 </tableRow>
                             </items>

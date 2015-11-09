@@ -15,7 +15,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     //MARK: Properties
     @IBOutlet var table: WKInterfaceTable!
-    var medicines = [(String, String?)]()
+    var medicines = [(String, String?, String?)]()
     
     
     //MARK: Session
@@ -42,39 +42,54 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
         
         
-        let iNeedMedicine = ["Value": "Query"]
-        session.sendMessage(iNeedMedicine, replyHandler: { (content:[String : AnyObject]) -> Void in
-            
-            if let medicine = content["medicines"]  as? [String] {
-                self.addMedicines(medicine)
-                print(medicine)
-                //self.reloadTable()
-            }
-            
-            }, errorHandler: {  (error ) -> Void in
-                print("We got an error from our watch device : " + error.domain)
-                
-            
-        })
+//        let iNeedMedicine = ["Value": "Query"]
+//        session.sendMessage(iNeedMedicine, replyHandler: { (content:[String : AnyObject]) -> Void in
+//            
+//            if let medicine = content["medicines"]  as? [String] {
+//                self.addMedicines(medicine)
+//                print(medicine)
+//                //self.reloadTable()
+//            }
+//            
+//            }, errorHandler: {  (error ) -> Void in
+//                print("We got an error from our watch device : " + error.domain)
+//                
+//            
+//        })
+//        
+//        
+//        let iNeedAmount = ["Value" : "Amount"]
+//        session.sendMessage(iNeedAmount, replyHandler: { (content:[String : AnyObject]) -> Void in
+//            
+//            if let quantity = content["quantity"]  as? [String] {
+//                self.addQuantities(quantity)
+//                print(quantity)
+//                self.reloadTable()
+//                
+//                
+//            }
+//            
+//            
+//            }, errorHandler: {  (error ) -> Void in
+//                print("We got an error from our watch device : " + error.domain)
+//                
+//            
+//        })
         
-        
-        let iNeedAmount = ["Value" : "Amount"]
-        session.sendMessage(iNeedAmount, replyHandler: { (content:[String : AnyObject]) -> Void in
+        let iNeedCoreData = ["Value": "CoreData"]
+        session.sendMessage(iNeedCoreData, replyHandler: { (content: [String: AnyObject]) -> Void in
             
-            if let quantity = content["quantity"]  as? [String] {
-                self.addQuantities(quantity)
-                print(quantity)
-                self.reloadTable()
-                
-                
+            if let meds = content["reply"] as? [String: [String]] {
+                if let medicineNames = meds["medicines"], amountNames = meds["amount"], timeNames = meds["time"] {
+                    self.addMedicines(medicineNames)
+                    self.addQuantities(amountNames)
+                    self.addTime(timeNames)
+                    self.reloadTable()
+                }
             }
-            
-            
-            }, errorHandler: {  (error ) -> Void in
-                print("We got an error from our watch device : " + error.domain)
-                
-            
-        })
+            }) { (error) -> Void in
+                print("We got an error from our watch device:" + error.domain)
+        }
 
     }
     
@@ -84,8 +99,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         for item in medicines {
             if let row = self.table.rowControllerAtIndex(rowIndex) as? tableRowController {
                 row.medicineLabel.setText(item.0)
-                if let quantity = item.1 {
+                if let quantity = item.1, time = item.2 {
                     row.amountLabel.setText(quantity)
+                    row.timeLabel.setText(time)
+                    
                 }
                 rowIndex++
             }
@@ -94,7 +111,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     func addMedicines(medicineNames: [String]) {
         for name in medicineNames {
-            medicines.append((name, nil))
+            medicines.append((name, nil, nil))
         }
     }
     
@@ -102,6 +119,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         guard medicines.count == quantities.count else { return }
         for i in 0..<medicines.count {
             medicines[i].1 = quantities[i]
+        }
+    }
+    
+    func addTime(timeNames: [String]) {
+        guard medicines.count == timeNames.count else { return }
+        for i in 0..<medicines.count {
+            medicines[i].2 = timeNames[i]
         }
     }
     
