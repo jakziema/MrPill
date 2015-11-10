@@ -340,6 +340,7 @@
 				TargetAttributes = {
 					0774FA8A1BC68E63006FB847 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 2B7PA75W9Z;
 					};
 					0774FA9E1BC68E63006FB847 = {
 						CreatedOnToolsVersion = 7.0;
@@ -347,9 +348,11 @@
 					};
 					07ED31D51BD008A200A92933 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 2B7PA75W9Z;
 					};
 					07ED31E11BD008A200A92933 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 2B7PA75W9Z;
 					};
 				};
 			};
@@ -629,6 +632,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MrPill_Parsecoco/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "appcamp.MrPill-Parsecoco";
@@ -644,6 +648,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MrPill_Parsecoco/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "appcamp.MrPill-Parsecoco";
@@ -680,6 +685,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = App_Extension;
 				INFOPLIST_FILE = App/Info.plist;
@@ -696,6 +702,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = App_Extension;
 				INFOPLIST_FILE = App/Info.plist;
@@ -711,6 +718,7 @@
 		07ED31F71BD008A200A92933 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "App Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "appcamp.MrPill-Parsecoco.watchkitapp.watchkitextension";
@@ -725,6 +733,7 @@
 		07ED31F81BD008A200A92933 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "App Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "appcamp.MrPill-Parsecoco.watchkitapp.watchkitextension";

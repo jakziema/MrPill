@@ -52,7 +52,7 @@ class MedicineTableViewController: UITableViewController{
     
     func handleRefresh(refreshControl: UIRefreshControl) {
         
-        fetchFromCoreData()
+        fetchFromParse()
         
         refreshControl.endRefreshing()
     }
@@ -71,8 +71,10 @@ class MedicineTableViewController: UITableViewController{
             //fetching data from Parse
             print("Jest internet")
             fetchFromParse()
-            fetchFromCoreData()
+            
             tableViewMedicines.reloadData()
+            
+            logOutButton.enabled = true
             
             
             
@@ -151,6 +153,7 @@ class MedicineTableViewController: UITableViewController{
                     }
                 }
             }
+            self.fetchFromCoreData()
         }
         
         do {
@@ -171,6 +174,8 @@ class MedicineTableViewController: UITableViewController{
         do {
             let primarySortDescriptor = NSSortDescriptor(key: "time", ascending: true)
             fetchRequest.sortDescriptors = [primarySortDescriptor]
+            
+            fetchRequest.predicate = nil
             
             let results = try context.executeFetchRequest(fetchRequest)
             medicines = results  as! [Medicine]

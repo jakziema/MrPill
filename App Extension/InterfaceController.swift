@@ -17,6 +17,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var table: WKInterfaceTable!
     var medicines = [(String, String?, String?)]()
     
+    @IBOutlet var alertLabel: WKInterfaceLabel!
     
     //MARK: Session
     var session: WCSession!
@@ -80,11 +81,17 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         session.sendMessage(iNeedCoreData, replyHandler: { (content: [String: AnyObject]) -> Void in
             
             if let meds = content["reply"] as? [String: [String]] {
+                
                 if let medicineNames = meds["medicines"], amountNames = meds["amount"], timeNames = meds["time"] {
+                    if medicineNames.count != 0 {
                     self.addMedicines(medicineNames)
                     self.addQuantities(amountNames)
                     self.addTime(timeNames)
+                    self.table.setHidden(false)
                     self.reloadTable()
+                    } else {
+                        self.alertLabel.setHidden(false)
+                    }
                 }
             }
             }) { (error) -> Void in
