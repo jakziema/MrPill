@@ -156,6 +156,8 @@ class MedicineTableViewController: UITableViewController{
                 }
             }
             self.fetchFromCoreData()
+            self.setupNotifications()
+            self.notificationSettings()
         }
         
         do {
@@ -188,6 +190,86 @@ class MedicineTableViewController: UITableViewController{
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
+    }
+    
+    func setupNotifications() {
+        let primarySortDescriptor = NSSortDescriptor(key: "time", ascending: true)
+        fetchRequest.sortDescriptors = [primarySortDescriptor]
+        
+        do {
+            let results = try context.executeFetchRequest(fetchRequest) as! [Medicine]
+            
+            for medicine in results {
+                
+                let today = NSDate()
+                let dateFormatter1 = NSDateFormatter()
+                dateFormatter1.dateFormat = "dd-MM-yyyy"
+                
+                var dateFromCoreData = dateFormatter1.dateFromString(medicine.endDate!)
+                
+                // comparing today with end date. if today is earlier than end date setup notification
+                if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending {
+                    
+                    let notification = UILocalNotification()
+                    notification.alertTitle = "Mr Pill"
+                    notification.alertBody = "TAKE: " +  medicine.name! + " AMOUNT: " + medicine.amount!
+                    notification.alertAction = "View list"
+                    
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                    var todayDateString = dateFormatter.stringFromDate(NSDate())
+                    
+                    todayDateString.replaceRange(Range<String.Index>(start: todayDateString.endIndex.advancedBy(-5), end: todayDateString.endIndex), with: medicine.time!)
+                    var stringDate = todayDateString
+                    
+                    let newDate = dateFormatter.dateFromString(todayDateString)
+                    
+                    //notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 )
+                    notification.fireDate = newDate
+                    print(notification.fireDate)
+                    notification.repeatInterval = NSCalendarUnit.NSDayCalendarUnit
+                    notification.soundName = UILocalNotificationDefaultSoundName
+                    notification.category = "MEDICINE_CATEGORY"
+                    
+                    UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+    
+    func notificationSettings() {
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge]
+        
+        let takeAction = UIMutableUserNotificationAction()
+        takeAction.identifier = "takePill"
+        takeAction.title = "Biorę"
+        takeAction.activationMode = UIUserNotificationActivationMode.Background
+        takeAction.destructive = false
+        takeAction.authenticationRequired = false
+        
+        let remindLaterAction = UIMutableUserNotificationAction()
+        remindLaterAction.identifier = "remindLater"
+        remindLaterAction.title = "Remind in 30 minutes"
+        remindLaterAction.activationMode = UIUserNotificationActivationMode.Background
+        remindLaterAction.destructive = false
+        remindLaterAction.authenticationRequired = false
+        
+        //arrays of actions
+        let actionsArray = NSArray(objects: takeAction, remindLaterAction)
+        let actionsArrayMinimal = NSArray(objects: takeAction, remindLaterAction)
+        
+        //category of notification
+        let medicine_category = UIMutableUserNotificationCategory()
+        medicine_category.identifier = "MEDICINE_CATEGORY"
+        medicine_category.setActions(actionsArray as? [UIUserNotificationAction], forContext: UIUserNotificationActionContext.Default)
+        medicine_category.setActions(actionsArrayMinimal as? [UIUserNotificationAction], forContext: UIUserNotificationActionContext.Minimal)
+        
+        //registering notifications
+        let categoriesForSettings = NSSet(objects: medicine_category)
+        let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as? Set<UIUserNotificationCategory>)
+        UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
     }
     
 }

@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             session.activateSession()
         }
         
-        setupNotifications()
-        notificationSettings()
+//        setupNotifications()
+//        notificationSettings()
         
 
         return true
