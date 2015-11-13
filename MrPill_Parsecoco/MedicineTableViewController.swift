@@ -128,7 +128,8 @@ class MedicineTableViewController: UITableViewController{
                     
                     if let  name = object["medicineName"] as? String,
                         amount = object["amountQuantity"] as? String,
-                        time = object["time"] as? String
+                        time = object["time"] as? String,
+                        endDate = object["endDate"] as? String
                     {
                         
                         let predicate = NSPredicate(format: "name = %@", name)
@@ -144,6 +145,7 @@ class MedicineTableViewController: UITableViewController{
                                 medicine.setValue(name, forKey: "name")
                                 medicine.setValue(amount, forKey: "amount")
                                 medicine.setValue(time, forKey: "time")
+                                medicine.setValue(endDate, forKey: "endDate")
                                 
                             }
                             

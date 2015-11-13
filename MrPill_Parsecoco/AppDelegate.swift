@@ -33,9 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             session.activateSession()
         }
         
-        
+        setupNotifications()
+        notificationSettings()
         
 
+        return true
+    }
+    
+    //MARK: NOTIFICATIONS
+    
+    func setupNotifications() {
         let primarySortDescriptor = NSSortDescriptor(key: "time", ascending: true)
         fetchRequest.sortDescriptors = [primarySortDescriptor]
         
@@ -43,39 +50,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             let results = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Medicine]
             
             for medicine in results {
-                let notification = UILocalNotification()
-                notification.alertTitle = "Mr Pill"
-                notification.alertBody = "TAKE: " +  medicine.name! + " AMOUNT: " + medicine.amount!
-                notification.alertAction = "View list"
-
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                var todayDateString = dateFormatter.stringFromDate(NSDate())
                 
-                todayDateString.replaceRange(Range<String.Index>(start: todayDateString.endIndex.advancedBy(-5), end: todayDateString.endIndex), with: medicine.time!)
-                var stringDate = todayDateString
+                let today = NSDate()
+                let dateFormatter1 = NSDateFormatter()
+                dateFormatter1.dateFormat = "dd-MM-yyyy"
                 
-                let newDate = dateFormatter.dateFromString(todayDateString)
-
-                //notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 )
-                notification.fireDate = newDate
-                print(notification.fireDate)
-                notification.repeatInterval = NSCalendarUnit.NSDayCalendarUnit
-                notification.soundName = UILocalNotificationDefaultSoundName
-                notification.category = "MEDICINE_CATEGORY"
+                var dateFromCoreData = dateFormatter1.dateFromString(medicine.endDate!)
                 
-                UIApplication.sharedApplication().scheduleLocalNotification(notification)
-                
+                // comparing today with end date. if today is earlier than end date setup notification
+                if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending {
+                    
+                    let notification = UILocalNotification()
+                    notification.alertTitle = "Mr Pill"
+                    notification.alertBody = "TAKE: " +  medicine.name! + " AMOUNT: " + medicine.amount!
+                    notification.alertAction = "View list"
+                    
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                    var todayDateString = dateFormatter.stringFromDate(NSDate())
+                    
+                    todayDateString.replaceRange(Range<String.Index>(start: todayDateString.endIndex.advancedBy(-5), end: todayDateString.endIndex), with: medicine.time!)
+                    var stringDate = todayDateString
+                    
+                    let newDate = dateFormatter.dateFromString(todayDateString)
+                    
+                    //notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 )
+                    notification.fireDate = newDate
+                    print(notification.fireDate)
+                    notification.repeatInterval = NSCalendarUnit.NSDayCalendarUnit
+                    notification.soundName = UILocalNotificationDefaultSoundName
+                    notification.category = "MEDICINE_CATEGORY"
+                    
+                    UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                }
             }
-            
-            
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-
-        
-        
-        
+    }
+    
+    func notificationSettings() {
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge]
         
         let takeAction = UIMutableUserNotificationAction()
@@ -106,61 +120,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         let categoriesForSettings = NSSet(objects: medicine_category)
         let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as? Set<UIUserNotificationCategory>)
         UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
-        
-
-
-        return true
     }
     
-    
-    
-   
-    
-    
-    
-//    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-//        // handle message
-//        var medicines = [String]()
-//        var quantity = [String]()
-//        
-//        if let receivedMessage = message["Value"] {
-//            if receivedMessage as! String == "Query" {
-//                let query = PFQuery(className: (PFUser.currentUser()?.username)!)
-//                
-//                query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-//                    
-//                    if error == nil {
-//                        for medicine in objects! {
-//                            if let zawartosc = medicine["medicineName"] as? String {
-//                                medicines.append(zawartosc)
-//                            }
-//                        }
-//                    }
-//                    // sending dict
-//                    replyHandler(["medicines": medicines])
-//                })
-//                
-//                
-//                
-//            } else if receivedMessage as! String == "Amount" {
-//                let query = PFQuery(className: (PFUser.currentUser()?.username)!)
-//                
-//                query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-//                    
-//                    if error == nil {
-//                        for quantity1 in objects! {
-//                            if let zawartosc = quantity1["amountQuantity"] as? String {
-//                                quantity.append(zawartosc)
-//                            }
-//                        }
-//                    }
-//                    // sending dict
-//                    replyHandler(["quantity": quantity])
-//                })
-//            }
-//            
-//        }
-//    }
+
     
     //MARK: Sending Core Data
     
