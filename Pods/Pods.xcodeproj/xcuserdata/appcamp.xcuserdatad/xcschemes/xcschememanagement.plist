@@ -8,49 +8,51 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
+		</dict>
+		<key>CKCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>ParseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-MrPill_Parsecoco.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2DF5F1A67CC0258FC87BAA5ACACA2DB8</key>
+		<key>4766339456AB166616AEDFACCFDAB0BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>803B6D2F153150DFC6D4687B13FCF023</key>
+		<key>6971172CC1B443DF09601B30D5AE2F0A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B625E24FBEECB60A3B50A1CC273E5167</key>
+		<key>89B585BB7D1C7033CBD69F1323ADF404</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E1F65AABEC16A1DFF2DB8BD42ADF04EC</key>
+		<key>ECCF16BD30218A51A59083BBC8C90DAC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F20B7F406B1DD5E20FD7B1D39756C8F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

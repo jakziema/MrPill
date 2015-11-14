@@ -53,11 +53,13 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-MrPill_Parsecoco/Bolts.framework'
+  install_framework 'Pods-MrPill_Parsecoco/CKCalendar.framework'
   install_framework 'Pods-MrPill_Parsecoco/Parse.framework'
   install_framework 'Pods-MrPill_Parsecoco/ParseUI.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-MrPill_Parsecoco/Bolts.framework'
+  install_framework 'Pods-MrPill_Parsecoco/CKCalendar.framework'
   install_framework 'Pods-MrPill_Parsecoco/Parse.framework'
   install_framework 'Pods-MrPill_Parsecoco/ParseUI.framework'
 fi

@@ -1,0 +1,1 @@
+CKCALENDAR_OTHER_LDFLAGS = -framework "CoreGraphics" -framework "QuartzCore" -framework "UIKit"

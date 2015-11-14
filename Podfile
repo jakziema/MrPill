@@ -5,6 +5,7 @@ use_frameworks!
 target 'MrPill_Parsecoco' do
 pod ‘Parse’
 pod ‘ParseUI’
+pod 'CKCalendar'
 
 end
 

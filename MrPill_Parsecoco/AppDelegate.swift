@@ -207,7 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                         notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 * 24 )
                         UIApplication.sharedApplication().scheduleLocalNotification(notification)
                         
-                    } 
+                    }
                 }
             } catch let error as NSError {
                 print(error.userInfo)
