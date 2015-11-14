@@ -14,5 +14,6 @@ class Medicine: NSManagedObject {
     @NSManaged var amount: String?
     @NSManaged var time: String?
     @NSManaged var endDate: String?
+    @NSManaged var notificationSet: Bool
     
 }

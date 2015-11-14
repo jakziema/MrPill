@@ -4,9 +4,10 @@
         <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationSet" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Medicine" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Medicine" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

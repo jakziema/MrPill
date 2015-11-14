@@ -29,7 +29,36 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         
     }
+    @IBAction func refresh() {
+        
+        refreshLabel.setHidden(true)
+        table.setHidden(false)
+        
+        let iNeedCoreData = ["Value": "CoreData"]
+        session.sendMessage(iNeedCoreData, replyHandler: { (content: [String: AnyObject]) -> Void in
+            
+            if let meds = content["reply"] as? [String: [String]] {
+                
+                if let medicineNames = meds["medicines"], amountNames = meds["amount"], timeNames = meds["time"] {
+                    if medicineNames.count != 0 {
+                        
+                        self.addMedicines(medicineNames)
+                        self.addQuantities(amountNames)
+                        self.addTime(timeNames)
+                        self.table.setHidden(false)
+                        self.reloadTable()
+                        self.alertLabel.setHidden(true)
+                    } else {
+                        self.alertLabel.setHidden(false)
+                    }
+                }
+            }
+            }) { (error) -> Void in
+                print("We got an error from our watch device:" + error.domain)
+        }
+    }
     
+    @IBOutlet var refreshLabel: WKInterfaceLabel!
     
     
     override func willActivate() {
@@ -40,62 +69,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             session = WCSession.defaultSession()
             session.delegate = self
             session.activateSession()
-        }
-        
-        
-//        let iNeedMedicine = ["Value": "Query"]
-//        session.sendMessage(iNeedMedicine, replyHandler: { (content:[String : AnyObject]) -> Void in
-//            
-//            if let medicine = content["medicines"]  as? [String] {
-//                self.addMedicines(medicine)
-//                print(medicine)
-//                //self.reloadTable()
-//            }
-//            
-//            }, errorHandler: {  (error ) -> Void in
-//                print("We got an error from our watch device : " + error.domain)
-//                
-//            
-//        })
-//        
-//        
-//        let iNeedAmount = ["Value" : "Amount"]
-//        session.sendMessage(iNeedAmount, replyHandler: { (content:[String : AnyObject]) -> Void in
-//            
-//            if let quantity = content["quantity"]  as? [String] {
-//                self.addQuantities(quantity)
-//                print(quantity)
-//                self.reloadTable()
-//                
-//                
-//            }
-//            
-//            
-//            }, errorHandler: {  (error ) -> Void in
-//                print("We got an error from our watch device : " + error.domain)
-//                
-//            
-//        })
-        
-        let iNeedCoreData = ["Value": "CoreData"]
-        session.sendMessage(iNeedCoreData, replyHandler: { (content: [String: AnyObject]) -> Void in
-            
-            if let meds = content["reply"] as? [String: [String]] {
-                
-                if let medicineNames = meds["medicines"], amountNames = meds["amount"], timeNames = meds["time"] {
-                    if medicineNames.count != 0 {
-                    self.addMedicines(medicineNames)
-                    self.addQuantities(amountNames)
-                    self.addTime(timeNames)
-                    self.table.setHidden(false)
-                    self.reloadTable()
-                    } else {
-                        self.alertLabel.setHidden(false)
-                    }
-                }
-            }
-            }) { (error) -> Void in
-                print("We got an error from our watch device:" + error.domain)
         }
 
     }

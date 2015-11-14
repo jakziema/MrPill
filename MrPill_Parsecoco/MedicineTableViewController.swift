@@ -146,6 +146,7 @@ class MedicineTableViewController: UITableViewController{
                                 medicine.setValue(amount, forKey: "amount")
                                 medicine.setValue(time, forKey: "time")
                                 medicine.setValue(endDate, forKey: "endDate")
+                                medicine.setValue(false, forKey: "notificationSet")
                                 
                             }
                             
@@ -156,8 +157,8 @@ class MedicineTableViewController: UITableViewController{
                 }
             }
             self.fetchFromCoreData()
-            self.setupNotifications()
-            self.notificationSettings()
+            self.setupNotificationFromCoreData()
+            
         }
         
         do {
@@ -192,7 +193,7 @@ class MedicineTableViewController: UITableViewController{
         
     }
     
-    func setupNotifications() {
+    func setupNotificationFromCoreData() {
         let primarySortDescriptor = NSSortDescriptor(key: "time", ascending: true)
         fetchRequest.sortDescriptors = [primarySortDescriptor]
         
@@ -201,6 +202,7 @@ class MedicineTableViewController: UITableViewController{
             
             for medicine in results {
                 
+                //dzisiejsza data
                 let today = NSDate()
                 let dateFormatter1 = NSDateFormatter()
                 dateFormatter1.dateFormat = "dd-MM-yyyy"
@@ -208,10 +210,14 @@ class MedicineTableViewController: UITableViewController{
                 var dateFromCoreData = dateFormatter1.dateFromString(medicine.endDate!)
                 
                 // comparing today with end date. if today is earlier than end date setup notification
-                if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending {
+                if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending && medicine.notificationSet == false {
+                    
+                    medicine.notificationSet = true
+                    
+                    print("Notification: " + medicine.name!)
                     
                     let notification = UILocalNotification()
-                    notification.alertTitle = "Mr Pill"
+                    notification.alertTitle = medicine.name!
                     notification.alertBody = "TAKE: " +  medicine.name! + " AMOUNT: " + medicine.amount!
                     notification.alertAction = "View list"
                     
@@ -224,16 +230,22 @@ class MedicineTableViewController: UITableViewController{
                     
                     let newDate = dateFormatter.dateFromString(todayDateString)
                     
-                    //notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 )
+                    //notification.fireDate = NSDate().dateByAddingTimeInterval(  60 )
                     notification.fireDate = newDate
                     print(notification.fireDate)
-                    notification.repeatInterval = NSCalendarUnit.NSDayCalendarUnit
                     notification.soundName = UILocalNotificationDefaultSoundName
                     notification.category = "MEDICINE_CATEGORY"
                     
                     UIApplication.sharedApplication().scheduleLocalNotification(notification)
                 }
+                
+                
+                
+                
+                
             }
+            
+            
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }

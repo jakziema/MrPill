@@ -33,8 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             session.activateSession()
         }
         
-//        setupNotifications()
-//        notificationSettings()
+       notificationSettings()
         
 
         return true
@@ -159,12 +158,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         if identifier == "remindLater" {
             
             print("remindLater")
-            notification.fireDate = NSDate().dateByAddingTimeInterval(60)
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
-
-        } else if identifier == "takePill" {
             
-            print("Pill taken")
+            notification.fireDate = NSDate().dateByAddingTimeInterval(60 )
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            
+        } else if identifier == "takePill" {
+            do {
+                let results = try managedObjectContext.executeFetchRequest(fetchRequest)
+                
+                for medicine in results {
+                    
+                    //dzisiejsza data
+                    let today = NSDate()
+                    let dateFormatter1 = NSDateFormatter()
+                    dateFormatter1.dateFormat = "dd-MM-yyyy"
+                    
+                    var dateFromCoreData = dateFormatter1.dateFromString(medicine.endDate!!)
+                    
+                    // comparing today with end date. if today is earlier than end date setup notification
+                    if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending && notification.alertTitle == medicine.name! {
+                        print("Tomorrow")
+                        notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 * 24 )
+                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                        
+                    } else {
+                        print("Do usunięcia")
+                    }
+                }
+            } catch let error as NSError {
+                print(error.userInfo)
+            }
+            
+            
             
             
         }
