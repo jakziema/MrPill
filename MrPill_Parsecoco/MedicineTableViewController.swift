@@ -210,7 +210,9 @@ class MedicineTableViewController: UITableViewController{
                 var dateFromCoreData = dateFormatter1.dateFromString(medicine.endDate!)
                 
                 // comparing today with end date. if today is earlier than end date setup notification
-                if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending && medicine.notificationSet == false {
+                if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending {
+                
+                if medicine.notificationSet == false {
                     
                     medicine.notificationSet = true
                     
@@ -238,6 +240,7 @@ class MedicineTableViewController: UITableViewController{
                     
                     UIApplication.sharedApplication().scheduleLocalNotification(notification)
                 }
+                } 
                 
                 
                 

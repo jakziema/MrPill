@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //UIApplication.sharedApplication().cancelAllLocalNotifications()
-
+        
         Parse.setApplicationId("YWOF5qUaH9MvmTsnOXJ1BI8V3fCem4rHuSsLuGKg", clientKey: "jE5GMMR3O9iVqsYdgUyNvKxcaTVLxXogLjTjWTpm")
         
         if(WCSession.isSupported()) {
@@ -33,9 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             session.activateSession()
         }
         
-       notificationSettings()
+        notificationSettings()
         
-
+        
         return true
     }
     
@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
     }
     
-
+    
     
     //MARK: Sending Core Data
     
@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                     
                     replyHandler(["reply": dict])
                 }
-                
+                    
                 catch let error as NSError {
                     print(error.userInfo)
                 }
@@ -176,37 +176,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                     var dateFromCoreData = dateFormatter1.dateFromString(medicine.endDate!!)
                     
                     // comparing today with end date. if today is earlier than end date setup notification
-                    if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending && notification.alertTitle == medicine.name! {
-                        print("Tomorrow")
+                    if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending{
                         
-                        let takenEntity = NSEntityDescription.entityForName("Dates", inManagedObjectContext: managedObjectContext)
-                        let date = Dates(entity: takenEntity!, insertIntoManagedObjectContext: managedObjectContext)
-                        
-                        date.date = NSDate()
-                        
-                        let medicineData = medicine as! Medicine
-                        
-                        var walks = medicineData.taken?.mutableCopy() as! NSMutableOrderedSet
-                        
-                        walks.addObject(date)
-                        
-                        medicineData.taken = walks as NSOrderedSet
-                        
-                        do {
+                        if notification.alertTitle == medicine.name! {
+                            print("Tomorrow")
                             
-                            try self.managedObjectContext.save()
-                            print("Context.save")
+                            let takenEntity = NSEntityDescription.entityForName("Dates", inManagedObjectContext: managedObjectContext)
+                            let date = Dates(entity: takenEntity!, insertIntoManagedObjectContext: managedObjectContext)
                             
+                            date.date = NSDate()
                             
-                        } catch let error as NSError {
-                            print("Could not save \(error), \(error.userInfo)")
+                            let medicineData = medicine as! Medicine
+                            
+                            var takes = medicineData.taken?.mutableCopy() as! NSMutableOrderedSet
+                            
+                            takes.addObject(date)
+                            
+                            medicineData.taken = takes as NSOrderedSet
+                            
+                            do {
+                                
+                                try self.managedObjectContext.save()
+                                print("Context.save")
+                                
+                                
+                            } catch let error as NSError {
+                                print("Could not save \(error), \(error.userInfo)")
+                            }
+                            
+                            //schedule notification
+                            
+                            notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 * 24 )
+                            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                            
                         }
-                        
-                        //schedule notification
-                        
-                        notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 * 24 )
-                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-                        
+                    } else {
+                        print("removing: " +  medicine.name)
+                        self.managedObjectContext.deleteObject(medicine as! NSManagedObject)
                     }
                 }
             } catch let error as NSError {
@@ -220,7 +226,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         completionHandler()
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
         
     }
@@ -234,12 +240,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         
-
+        
     }
     
     func applicationWillTerminate(application: UIApplication) {
         self.saveContext()
-
+        
     }
     
     
@@ -250,13 +256,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "appcamp.Example_of_Core_Data" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
-        }()
+    }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("Model", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
-        }()
+    }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
@@ -281,7 +287,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         }
         
         return coordinator
-        }()
+    }()
     
     lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
@@ -289,7 +295,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
-        }()
+    }()
     
     // MARK: - Core Data Saving support
     
