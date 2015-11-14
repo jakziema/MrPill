@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Medicine+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Medicine.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Dates+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Dates.swift">
+   </FileRef>
+   <FileRef
       location = "group:MrPill_Parsecoco.xcodeproj">
    </FileRef>
    <FileRef

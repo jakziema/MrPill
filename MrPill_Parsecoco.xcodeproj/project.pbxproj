@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		072DEF841BE503CE00A98AB0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 072DEF821BE503CE00A98AB0 /* Model.xcdatamodeld */; };
-		07301CB71BE521FC00838A34 /* Medicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07301CB61BE521FC00838A34 /* Medicine.swift */; };
 		07301CBB1BE5338800838A34 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07301CBA1BE5338800838A34 /* Reachability.swift */; };
+		0733F63B1BF7B0E000A08AAA /* Medicine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733F6371BF7B0E000A08AAA /* Medicine+CoreDataProperties.swift */; };
+		0733F63C1BF7B0E000A08AAA /* Medicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733F6381BF7B0E000A08AAA /* Medicine.swift */; };
+		0733F63D1BF7B0E000A08AAA /* Dates+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733F6391BF7B0E000A08AAA /* Dates+CoreDataProperties.swift */; };
+		0733F63E1BF7B0E000A08AAA /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733F63A1BF7B0E000A08AAA /* Dates.swift */; };
 		0774FA8F1BC68E63006FB847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0774FA8E1BC68E63006FB847 /* AppDelegate.swift */; };
 		0774FA941BC68E63006FB847 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0774FA921BC68E63006FB847 /* Main.storyboard */; };
 		0774FA961BC68E63006FB847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774FA951BC68E63006FB847 /* Assets.xcassets */; };
@@ -82,8 +85,11 @@
 
 /* Begin PBXFileReference section */
 		072DEF831BE503CE00A98AB0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		07301CB61BE521FC00838A34 /* Medicine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medicine.swift; sourceTree = "<group>"; };
 		07301CBA1BE5338800838A34 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		0733F6371BF7B0E000A08AAA /* Medicine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medicine+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0733F6381BF7B0E000A08AAA /* Medicine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medicine.swift; sourceTree = "<group>"; };
+		0733F6391BF7B0E000A08AAA /* Dates+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dates+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0733F63A1BF7B0E000A08AAA /* Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 		0774FA8B1BC68E63006FB847 /* MrPill_Parsecoco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MrPill_Parsecoco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0774FA8E1BC68E63006FB847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0774FA931BC68E63006FB847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -225,10 +231,13 @@
 		07ED31FF1BD00C6D00A92933 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0733F6371BF7B0E000A08AAA /* Medicine+CoreDataProperties.swift */,
+				0733F6381BF7B0E000A08AAA /* Medicine.swift */,
+				0733F6391BF7B0E000A08AAA /* Dates+CoreDataProperties.swift */,
+				0733F63A1BF7B0E000A08AAA /* Dates.swift */,
 				07E15A2F1BC6917B009B5AB4 /* UIViewControllerExtension.swift */,
 				07E15A2B1BC6911D009B5AB4 /* MedicineTableViewController.swift */,
 				07301CBA1BE5338800838A34 /* Reachability.swift */,
-				07301CB61BE521FC00838A34 /* Medicine.swift */,
 				07E15A2D1BC6914D009B5AB4 /* LoginViewController.swift */,
 			);
 			name = ViewControllers;
@@ -467,14 +476,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07301CB71BE521FC00838A34 /* Medicine.swift in Sources */,
 				0774FA8F1BC68E63006FB847 /* AppDelegate.swift in Sources */,
+				0733F63C1BF7B0E000A08AAA /* Medicine.swift in Sources */,
+				0733F63E1BF7B0E000A08AAA /* Dates.swift in Sources */,
 				07E15A2A1BC690E5009B5AB4 /* MedicineTableViewCell.swift in Sources */,
 				07E15A301BC6917B009B5AB4 /* UIViewControllerExtension.swift in Sources */,
 				072DEF841BE503CE00A98AB0 /* Model.xcdatamodeld in Sources */,
 				07E15A2E1BC6914D009B5AB4 /* LoginViewController.swift in Sources */,
 				07301CBB1BE5338800838A34 /* Reachability.swift in Sources */,
 				07E15A2C1BC6911D009B5AB4 /* MedicineTableViewController.swift in Sources */,
+				0733F63B1BF7B0E000A08AAA /* Medicine+CoreDataProperties.swift in Sources */,
+				0733F63D1BF7B0E000A08AAA /* Dates+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

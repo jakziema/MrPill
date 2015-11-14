@@ -178,12 +178,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                     // comparing today with end date. if today is earlier than end date setup notification
                     if today.compare(dateFromCoreData!) == NSComparisonResult.OrderedAscending && notification.alertTitle == medicine.name! {
                         print("Tomorrow")
+                        
+                        let takenEntity = NSEntityDescription.entityForName("Dates", inManagedObjectContext: managedObjectContext)
+                        let date = Dates(entity: takenEntity!, insertIntoManagedObjectContext: managedObjectContext)
+                        
+                        date.date = NSDate()
+                        
+                        let medicineData = medicine as! Medicine
+                        
+                        var walks = medicineData.taken?.mutableCopy() as! NSMutableOrderedSet
+                        
+                        walks.addObject(date)
+                        
+                        medicineData.taken = walks as NSOrderedSet
+                        
+                        do {
+                            
+                            try self.managedObjectContext.save()
+                            print("Context.save")
+                            
+                            
+                        } catch let error as NSError {
+                            print("Could not save \(error), \(error.userInfo)")
+                        }
+                        
+                        //schedule notification
+                        
                         notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 * 24 )
                         UIApplication.sharedApplication().scheduleLocalNotification(notification)
                         
-                    } else {
-                        print("Do usunięcia")
-                    }
+                    } 
                 }
             } catch let error as NSError {
                 print(error.userInfo)
