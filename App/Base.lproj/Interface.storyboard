@@ -11,7 +11,7 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="App" customModuleProvider="target">
                     <items>
                         <label width="136" height="70.5" alignment="left" hidden="YES" text="Baza jest pusta" id="bZV-ge-cuc"/>
-                        <label height="141.5" alignment="left" text="Log in on your watch and refresh to get medicines" textAlignment="center" numberOfLines="3" id="e4M-su-OCD">
+                        <label width="136" height="141.5" alignment="left" text="Log in on your phone and refresh to get medicines" textAlignment="center" numberOfLines="4" id="e4M-su-OCD">
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </label>
                         <table alignment="left" hidden="YES" id="4PQ-62-eHx">
