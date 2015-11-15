@@ -16,6 +16,7 @@ class CalendarViewController: UIViewController, CKCalendarDelegate {
     var context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     let fetchRequestDate = NSFetchRequest(entityName: "Dates")
     let fetchRequestMedicine = NSFetchRequest(entityName: "Medicine")
+    @IBOutlet var medicineLabel: UILabel!
     
     
     var medicine : Medicine?
@@ -32,7 +33,7 @@ class CalendarViewController: UIViewController, CKCalendarDelegate {
             let resultsMedicines  = try context.executeFetchRequest(fetchRequestMedicine)
             let resultsDates = try context.executeFetchRequest(fetchRequestDate)
             fetchRequestMedicine.predicate = NSPredicate(format: "name == %@ ", medicine!.name!)
-            
+            medicineLabel.text = medicine!.name!
             
             for date in resultsDates {
                 dates.append(date.date as! NSDate!)
