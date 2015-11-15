@@ -195,14 +195,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zyrtec" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkN-Lg-FFj">
-                                <rect key="frame" x="102" y="85" width="170" height="59"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zyrtec" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkN-Lg-FFj">
+                                <rect key="frame" x="61" y="82" width="253" height="59"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HkN-Lg-FFj" firstAttribute="leading" secondItem="NaJ-ve-OZt" secondAttribute="leadingMargin" constant="45" id="VjR-lR-YYI"/>
+                            <constraint firstItem="BDo-CN-6WR" firstAttribute="top" secondItem="HkN-Lg-FFj" secondAttribute="bottom" constant="526" id="dVL-47-qVs"/>
+                            <constraint firstItem="HkN-Lg-FFj" firstAttribute="centerX" secondItem="NaJ-ve-OZt" secondAttribute="centerX" id="fIX-3b-ofH"/>
+                            <constraint firstItem="HkN-Lg-FFj" firstAttribute="top" secondItem="wlF-Et-ge6" secondAttribute="bottom" constant="18" id="kSf-TF-y1Z"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="medicineLabel" destination="HkN-Lg-FFj" id="lbC-33-ein"/>
