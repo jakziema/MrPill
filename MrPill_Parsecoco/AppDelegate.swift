@@ -186,26 +186,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                             
                             date.date = NSDate()
                             
-                            let medicineData = medicine as! Medicine
+                            let currentMedicine = medicine as! Medicine
                             
-                            var takes = medicineData.taken?.mutableCopy() as! NSMutableOrderedSet
+                            var takes = currentMedicine.taken?.mutableCopy() as! NSMutableOrderedSet
                             
                             takes.addObject(date)
                             
-                            medicineData.taken = takes as NSOrderedSet
+                            currentMedicine.taken = takes as NSOrderedSet
                             
                             do {
-                                
                                 try self.managedObjectContext.save()
                                 print("Context.save")
-                                
                                 
                             } catch let error as NSError {
                                 print("Could not save \(error), \(error.userInfo)")
                             }
                             
                             //schedule notification
-                            
                             notification.fireDate = NSDate().dateByAddingTimeInterval( 60 * 60 * 24 )
                             UIApplication.sharedApplication().scheduleLocalNotification(notification)
                             

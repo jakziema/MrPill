@@ -287,4 +287,24 @@ class MedicineTableViewController: UITableViewController{
         UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
     }
     
+    //MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "ShowCalendar" :
+                let calendarVC = segue.destinationViewController as! CalendarViewController
+                if let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell) {
+                    calendarVC.medicine  = medicines[indexPath.row]
+                }
+                
+            
+            default: break
+            }
+        }
+    }
+    
+    
+    
+    
+    
 }

@@ -2,7 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
     <entity name="Dates" representedClassName=".Dates" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="takes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Medicine" inverseName="taken" inverseEntity="Medicine" syncable="YES"/>
+        <relationship name="medicine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Medicine" inverseName="taken" inverseEntity="Medicine" syncable="YES"/>
     </entity>
     <entity name="Medicine" representedClassName=".Medicine" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,10 +10,10 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notificationSet" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="taken" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Dates" inverseName="takes" inverseEntity="Dates" syncable="YES"/>
+        <relationship name="taken" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Dates" inverseName="medicine" inverseEntity="Dates" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Dates" positionX="322" positionY="141" width="128" height="75"/>
         <element name="Medicine" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="Dates" positionX="322" positionY="141" width="128" height="73"/>
     </elements>
 </model>

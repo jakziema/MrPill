@@ -179,10 +179,8 @@
 			children = (
 				0774FA8E1BC68E63006FB847 /* AppDelegate.swift */,
 				0774FA921BC68E63006FB847 /* Main.storyboard */,
-				072DEF821BE503CE00A98AB0 /* Model.xcdatamodeld */,
-				07E15A291BC690E5009B5AB4 /* MedicineTableViewCell.swift */,
 				07A93A2B1BF7BBCB00C502EF /* Model */,
-				07ED31FF1BD00C6D00A92933 /* ViewControllers */,
+				07ED31FF1BD00C6D00A92933 /* Controllers */,
 				0774FA951BC68E63006FB847 /* Assets.xcassets */,
 				0774FA971BC68E63006FB847 /* LaunchScreen.storyboard */,
 				0774FA9A1BC68E63006FB847 /* Info.plist */,
@@ -203,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				0733F6381BF7B0E000A08AAA /* Medicine.swift */,
+				072DEF821BE503CE00A98AB0 /* Model.xcdatamodeld */,
 				0733F6391BF7B0E000A08AAA /* Dates+CoreDataProperties.swift */,
 				0733F63A1BF7B0E000A08AAA /* Dates.swift */,
 				0733F6371BF7B0E000A08AAA /* Medicine+CoreDataProperties.swift */,
@@ -242,16 +241,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		07ED31FF1BD00C6D00A92933 /* ViewControllers */ = {
+		07ED31FF1BD00C6D00A92933 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				07A93A291BF7BB8A00C502EF /* CalendarViewController.swift */,
 				07E15A2F1BC6917B009B5AB4 /* UIViewControllerExtension.swift */,
 				07E15A2B1BC6911D009B5AB4 /* MedicineTableViewController.swift */,
+				07E15A291BC690E5009B5AB4 /* MedicineTableViewCell.swift */,
 				07301CBA1BE5338800838A34 /* Reachability.swift */,
 				07E15A2D1BC6914D009B5AB4 /* LoginViewController.swift */,
 			);
-			name = ViewControllers;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		0D3FE91A0D5E3468564B13B5 /* Frameworks */ = {

@@ -155,7 +155,7 @@
                                     <outlet property="amountLabel" destination="8qC-k8-KtM" id="kE4-nd-otZ"/>
                                     <outlet property="medicineLabel" destination="xPc-qb-mPC" id="w44-hw-2ql"/>
                                     <outlet property="timeLabel" destination="1FY-tB-sHX" id="bRb-fd-R43"/>
-                                    <segue destination="7Qj-43-lIH" kind="show" id="Lta-mI-QUI"/>
+                                    <segue destination="7Qj-43-lIH" kind="show" identifier="ShowCalendar" id="Lta-mI-QUI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
