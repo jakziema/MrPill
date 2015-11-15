@@ -20,7 +20,7 @@ class CalendarViewController: UIViewController, CKCalendarDelegate {
     
     var medicine : Medicine?
     
-    var dates = [NSDate]()
+    //var dates = [NSDate]()
     
     
     override func viewDidLoad() {
@@ -53,6 +53,8 @@ class CalendarViewController: UIViewController, CKCalendarDelegate {
         
     }
     
+    var dates = [NSDate(),NSDate(timeIntervalSinceNow: -60*60*24*2), NSDate(timeIntervalSinceNow: -60*60*24*3), NSDate(timeIntervalSinceNow: -60*60*24*5), NSDate(timeIntervalSinceNow: -60*60*24*7)]
+
     
     func calendar(calendar: CKCalendarView!, configureDateItem dateItem: CKDateItem!, forDate date: NSDate!) {
 

@@ -259,7 +259,7 @@ class MedicineTableViewController: UITableViewController{
         
         let takeAction = UIMutableUserNotificationAction()
         takeAction.identifier = "takePill"
-        takeAction.title = "Biorę"
+        takeAction.title = "Take"
         takeAction.activationMode = UIUserNotificationActivationMode.Background
         takeAction.destructive = false
         takeAction.authenticationRequired = false
