@@ -21,25 +21,22 @@ class CalendarViewController: UIViewController, CKCalendarDelegate {
     
     var medicine : Medicine?
     
-    //var dates = [NSDate]()
-    
+    var dates = [NSDate]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
             
             navigationController?.title = medicine!.name!
-            
-            let resultsMedicines  = try context.executeFetchRequest(fetchRequestMedicine)
-            let resultsDates = try context.executeFetchRequest(fetchRequestDate)
-            fetchRequestMedicine.predicate = NSPredicate(format: "name == %@ ", medicine!.name!)
-            medicineLabel.text = medicine!.name!
-            
-            for date in resultsDates {
-                dates.append(date.date as! NSDate!)
+
+            for elem in (medicine?.taken)! {
+                print("tessst: \(elem.date!)")
+                
+                dates.append(elem.date!!)
             }
             
-            
+            medicineLabel.text = medicine!.name!
+   
         } catch let error as NSError {
             print(error.userInfo)
         }
@@ -54,7 +51,7 @@ class CalendarViewController: UIViewController, CKCalendarDelegate {
         
     }
     
-    var dates = [NSDate(),NSDate(timeIntervalSinceNow: -60*60*24*2), NSDate(timeIntervalSinceNow: -60*60*24*3), NSDate(timeIntervalSinceNow: -60*60*24*5), NSDate(timeIntervalSinceNow: -60*60*24*7)]
+    
 
     
     func calendar(calendar: CKCalendarView!, configureDateItem dateItem: CKDateItem!, forDate date: NSDate!) {

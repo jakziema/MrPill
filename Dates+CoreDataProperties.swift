@@ -2,7 +2,7 @@
 //  Dates+CoreDataProperties.swift
 //  
 //
-//  Created by appcamp on 11/14/15.
+//  Created by appcamp on 11/16/15.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,6 +15,6 @@ import CoreData
 extension Dates {
 
     @NSManaged var date: NSDate?
-    @NSManaged var takes: Medicine?
+    @NSManaged var medicine: Medicine?
 
 }
