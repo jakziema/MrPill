@@ -137,6 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                     let results = try managedObjectContext.executeFetchRequest(fetchRequest)
                     
                     for medicine in results {
+                        
                         medicinesArray.append(medicine.name!)
                         amountArray.append(medicine.amount!!)
                         timeArray.append(medicine.time!!)
@@ -145,6 +146,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                     dict = ["medicines": medicinesArray, "amount": amountArray, "time": timeArray]
                     
                     replyHandler(["reply": dict])
+                    
+                    medicinesArray.removeAll()
+                    amountArray.removeAll()
+                    timeArray.removeAll()
+                    dict.removeAll()
+                    
+                    
+                    
                 }
                     
                 catch let error as NSError {

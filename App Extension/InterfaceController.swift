@@ -48,6 +48,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                         self.table.setHidden(false)
                         self.reloadTable()
                         self.alertLabel.setHidden(true)
+                        
+                        self.medicines.removeAll()
+                        
                     } else {
                         self.alertLabel.setHidden(false)
                     }
@@ -56,6 +59,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }) { (error) -> Void in
                 print("We got an error from our watch device:" + error.domain)
         }
+        
+        
     }
     
     @IBOutlet var refreshLabel: WKInterfaceLabel!
